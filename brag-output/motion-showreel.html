@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rudra Kathoke — 15s Motion-Design Launch Showreel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist+Mono:wght@300..800&family=Geist:wght@300..900&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: #060508;
+      color: #eae5ec;
+      font-family: 'Geist', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .reel-header { text-align: center; margin-bottom: 1.5rem; }
+    .reel-header h1 { font-family: 'Syne', sans-serif; font-size: 1.8rem; font-weight: 800; color: #c2a4ff; }
+    .reel-header p { font-family: 'Geist Mono', monospace; font-size: 0.82rem; color: #adacac; margin-top: 0.25rem; }
+
+    /* 9:16 VERTICAL SHOWREEL CONTAINER */
+    .vertical-reel-frame {
+      width: 380px;
+      height: 675px; /* 9:16 Aspect Ratio */
+      background: #0b080c;
+      border: 2px solid rgba(194, 164, 255, 0.3);
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(194, 164, 255, 0.15);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* TIMELINE PROGRESS BAR */
+    .reel-timeline {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 100;
+    }
+
+    .reel-progress {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, #c8ff5a, #c2a4ff);
+      transition: width 0.1s linear;
+    }
+
+    /* SCENES CONTAINER */
+    .scene {
+      position: absolute;
+      inset: 0;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+
+    .scene.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    /* SCENE 1: KINETIC TITLE */
+    .hero-badge-pill {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: #c8ff5a;
+      background: rgba(200, 255, 90, 0.15);
+      border: 1px solid rgba(200, 255, 90, 0.4);
+      padding: 0.35rem 0.85rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+    }
+
+    .kinetic-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 0%, #c2a4ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .kinetic-sub {
+      font-size: 0.95rem;
+      color: #adacac;
+      line-height: 1.5;
+    }
+
+    /* SCENE 2: X-RAY OVERLAY */
+    .xray-demo-card {
+      width: 100%;
+      background: rgba(19, 15, 22, 0.9);
+      border: 1px solid rgba(200, 255, 90, 0.5);
+      border-radius: 16px;
+      padding: 1.25rem;
+      box-shadow: 0 0 30px rgba(200, 255, 90, 0.2);
+      text-align: left;
+      position: relative;
+    }
+
+    .xray-tag {
+      position: absolute;
+      top: -12px;
+      right: 15px;
+      background: #c8ff5a;
+      color: #0b080c;
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .xray-metrics-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .xray-item {
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.78rem;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 0.4rem;
+    }
+
+    /* SCENE 3: RAG & JD MATCH */
+    .jd-fit-box {
+      width: 100%;
+      background: rgba(19, 15, 22, 0.95);
+      border: 1px solid rgba(194, 164, 255, 0.3);
+      border-radius: 16px;
+      padding: 1.25rem;
+    }
+
+    .fit-score {
+      font-family: 'Syne', sans-serif;
+      font-size: 3rem;
+      font-weight: 800;
+      color: #c8ff5a;
+    }
+
+    /* CONTROLS BELOW FRAME */
+    .controls-bar {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn-control {
+      background: rgba(194, 164, 255, 0.15);
+      border: 1px solid rgba(194, 164, 255, 0.3);
+      color: #eae5ec;
+      font-family: 'Geist Mono', monospace;
+      font-size: 0.85rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-control:hover { background: #c2a4ff; color: #0b080c; }
+  </style>
+</head>
+<body>
+
+  <div class="reel-header">
+    <h1>Rudra Kathoke — Launch Motion Showreel</h1>
+    <p>9:16 Vertical Video Preview (15 Seconds) // Proof of Work Portfolio</p>
+  </div>
+
+  <div class="vertical-reel-frame">
+    <div class="reel-timeline"><div class="reel-progress" id="reelProgress"></div></div>
+
+    <!-- SCENE 1 (0 - 3.5s) -->
+    <div class="scene active" id="scene1">
+      <div class="hero-badge-pill">⚡ PROOF OF WORK PORTFOLIO</div>
+      <h2 class="kinetic-title">RUDRA KATHOKE</h2>
+      <p class="kinetic-sub">Architecting high-throughput Java backends, OpenCV/YOLO wildlife AI, & Web3 gasless contracts.</p>
+      <div style="margin-top:2rem; font-family:'Geist Mono',monospace; font-size:0.75rem; color:#c8ff5a;">CGPA 9.2 / 10.0 • RBU Nagpur CSE '28</div>
+    </div>
+
+    <!-- SCENE 2 (3.5 - 7.5s) -->
+    <div class="scene" id="scene2">
+      <div class="hero-badge-pill">🔍 X-RAY MODE TOGGLE</div>
+      <h3 style="font-size:1.4rem; font-weight:800; margin-bottom:1rem;">Every claim is running code.</h3>
+      <div class="xray-demo-card">
+        <div class="xray-tag">X-RAY ACTIVE ⚡</div>
+        <div style="font-weight:700; font-size:0.9rem; color:#c2a4ff;">SYSTEM TOPOLOGY METRICS</div>
+        <div class="xray-metrics-list">
+          <div class="xray-item"><span>Python FastAPI</span> <span style="color:#c8ff5a;">14ms</span></div>
+          <div class="xray-item"><span>PostgreSQL (pgvector)</span> <span style="color:#c8ff5a;">8ms</span></div>
+          <div class="xray-item"><span>Java Spring Boot 3</span> <span style="color:#c8ff5a;">18ms</span></div>
+          <div class="xray-item"><span>On-Device MediaPipe</span> <span style="color:#c8ff5a;">12ms</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCENE 3 (7.5 - 11.5s) -->
+    <div class="scene" id="scene3">
+      <div class="hero-badge-pill">🤖 RAG & NLP MATCHING</div>
+      <h3 style="font-size:1.3rem; font-weight:800; margin-bottom:1rem;">Paste Any Job Description</h3>
+      <div class="jd-fit-box">
+        <div class="fit-score">98% FIT</div>
+        <p style="font-size:0.82rem; color:#adacac; margin-bottom:0.75rem;">Semantic vector embedding ranker automatically maps project architectures to job criteria.</p>
+        <div style="font-family:'Geist Mono',monospace; font-size:0.72rem; color:#c2a4ff;">TOP MATCH: PUGMARK Wildlife AI</div>
+      </div>
+    </div>
+
+    <!-- SCENE 4 (11.5 - 15.0s) -->
+    <div class="scene" id="scene4">
+      <div class="hero-badge-pill">🚀 AVAILABLE FOR INTERNSHIPS</div>
+      <h2 class="kinetic-title" style="font-size:2rem;">LET'S BUILD TOGETHER</h2>
+      <p class="kinetic-sub">Java Backend • AI Systems • Full-Stack</p>
+      <div style="margin-top:1.5rem; background:rgba(200,255,90,0.15); border:1px solid #c8ff5a; color:#c8ff5a; padding:0.6rem 1rem; border-radius:10px; font-family:'Geist Mono',monospace; font-size:0.8rem; font-weight:700;">
+        rudrakathoke@gmail.com
+      </div>
+    </div>
+  </div>
+
+  <div class="controls-bar">
+    <button class="btn-control" id="playReelBtn">▶ Replay 15s Showreel</button>
+    <a href="share-copy.txt" target="_blank" class="btn-control">📄 View Social Share Copy</a>
+  </div>
+
+  <script>
+    const scenes = [
+      document.getElementById('scene1'),
+      document.getElementById('scene2'),
+      document.getElementById('scene3'),
+      document.getElementById('scene4')
+    ];
+    const progress = document.getElementById('reelProgress');
+    const playBtn = document.getElementById('playReelBtn');
+
+    let currentScene = 0;
+    let timer = null;
+    let startTime = 0;
+    const duration = 15000; // 15 seconds total
+
+    function runShowreel() {
+      startTime = Date.now();
+      if (timer) clearInterval(timer);
+
+      timer = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const pct = Math.min(100, (elapsed / duration) * 100);
+        progress.style.width = `${pct}%`;
+
+        // Scene transitions
+        if (elapsed < 3500) setScene(0);
+        else if (elapsed < 7500) setScene(1);
+        else if (elapsed < 11500) setScene(2);
+        else setScene(3);
+
+        if (elapsed >= duration) {
+          clearInterval(timer);
+        }
+      }, 50);
+    }
+
+    function setScene(idx) {
+      if (currentScene === idx) return;
+      scenes.forEach((s, i) => s.classList.toggle('active', i === idx));
+      currentScene = idx;
+    }
+
+    playBtn.addEventListener('click', runShowreel);
+    runShowreel();
+  </script>
+</body>
+</html>

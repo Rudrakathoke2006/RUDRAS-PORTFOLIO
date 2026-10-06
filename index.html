@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rudra Kathoke — Java Backend Architect | AI Engineer | Web3 Developer</title>
+  <meta name="description" content="Cinematic portfolio of Rudra Kathoke — Computer Science student at Ramdeobaba University building secure backend systems in Java, OpenCV/YOLO AI, and Web3. CGPA 9.2, 10+ hackathons, 2 internships." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist+Mono:wght@300..800&family=Geist:wght@300..900&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <!-- 2026 Core Tech: Three.js, GSAP & Confetti -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- TOP READING PROGRESS BAR (Scroll-Driven CSS + JS fallback) -->
+  <div class="reading-progress-bar" id="readingProgressBar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Page reading progress"></div>
+
+  <!-- ACCESSIBILITY ARIA LIVE REGION -->
+  <div id="ariaLiveAnnouncer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- AUTO-SAVE FLOATING TOAST -->
+  <div class="autosave-toast" id="autosaveToast" role="status" aria-live="polite">
+    <span class="autosave-icon">💾</span>
+    <span class="autosave-text" id="autosaveText">Draft auto-saved to localStorage</span>
+  </div>
+
+  <!-- VIBE CODER POP NEO-BRUTALIST LOADER SCREEN -->
+  <div class="vibe-loader-screen" id="loaderScreen" aria-label="Loading Rudra's Portfolio">
+    <!-- Floating Cyber Accent Graphics -->
+    <div class="vibe-sticker sticker-bolt" aria-hidden="true">
+      <svg width="48" height="56" viewBox="0 0 48 56" fill="none">
+        <path d="M28 2L4 32H22L16 54L44 22H24L28 2Z" fill="rgba(56, 189, 248, 0.25)" stroke="#38bdf8" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M26 8L10 30H24L20 46L38 24H24L26 8Z" fill="#a855f7"/>
+      </svg>
+    </div>
+
+    <div class="vibe-sticker sticker-star-tl" aria-hidden="true">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="#38bdf8">
+        <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" stroke="#a855f7" stroke-width="1.5"/>
+      </svg>
+    </div>
+
+    <div class="vibe-sticker sticker-star-tr" aria-hidden="true">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="#a855f7">
+        <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" stroke="#38bdf8" stroke-width="1.8"/>
+      </svg>
+    </div>
+
+    <div class="vibe-sticker sticker-star-br" aria-hidden="true">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="#00ff9d">
+        <path d="M12 0L14.8 9.2L24 12L14.8 14.8L12 24L9.2 14.8L0 12L9.2 9.2L12 0Z" stroke="#38bdf8" stroke-width="1.5"/>
+      </svg>
+    </div>
+
+    <div class="vibe-sticker sticker-target" aria-hidden="true">
+      <svg width="58" height="58" viewBox="0 0 64 64" fill="none">
+        <circle cx="28" cy="36" r="22" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="2.5"/>
+        <circle cx="28" cy="36" r="15" fill="rgba(56, 189, 248, 0.2)" stroke="#38bdf8" stroke-width="2"/>
+        <circle cx="28" cy="36" r="8" fill="rgba(0, 255, 157, 0.25)" stroke="#00ff9d" stroke-width="2"/>
+        <circle cx="28" cy="36" r="3" fill="#00ff9d"/>
+        <path d="M48 10L32 30" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+        <path d="M46 8L56 4L52 14L46 8Z" fill="#a855f7" stroke="#38bdf8" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M40 14L48 6" stroke="#38bdf8" stroke-width="2"/>
+      </svg>
+    </div>
+
+    <div class="vibe-sticker sticker-rocket" aria-hidden="true">
+      <svg width="72" height="72" viewBox="0 0 64 64" fill="none">
+        <g transform="rotate(-15 32 32)">
+          <path d="M10 46L2 54C4 50 4 44 8 42L10 46Z" fill="#38bdf8"/>
+          <path d="M8 44L0 52C2 48 3 45 6 42L8 44Z" fill="#00ff9d"/>
+          <path d="M18 42L8 48L14 36L18 42Z" fill="#a855f7" stroke="#38bdf8" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M38 22L44 32L32 26L38 22Z" fill="#a855f7" stroke="#38bdf8" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M48 6C36 10 24 22 18 36L28 46C42 40 54 28 58 16C58 14 56 6 48 6Z" fill="rgba(20, 14, 48, 0.85)" stroke="#38bdf8" stroke-width="2.5" stroke-linejoin="round"/>
+          <path d="M58 16C58 14 56 6 48 6C45 7 42 9 40 11C46 13 51 18 53 24C55 22 57 19 58 16Z" fill="#a855f7"/>
+          <circle cx="36" cy="24" r="5" fill="#00ff9d" stroke="#38bdf8" stroke-width="1.8"/>
+        </g>
+      </svg>
+    </div>
+
+    <button type="button" class="vibe-skip-btn" id="loaderSkipBtn" aria-label="Skip Loading Screen">
+      SKIP [ESC]
+    </button>
+
+    <!-- Thick Black Horizontal Center Line -->
+    <div class="vibe-center-line" aria-hidden="true"></div>
+
+    <!-- Center Stage: Chunky Letter Blocks + Badge + Status + Progress -->
+    <div class="vibe-loader-core">
+      <!-- Chunky Neo-Brutalist Letter Blocks Spelling RUDRA -->
+      <div class="vibe-blocks-row" aria-label="RUDRA">
+        <div class="vibe-block block-pink" style="--i:0"><span class="vibe-letter">R</span></div>
+        <div class="vibe-block block-cyan" style="--i:1"><span class="vibe-letter">U</span></div>
+        <div class="vibe-block block-green" style="--i:2"><span class="vibe-letter">D</span></div>
+        <div class="vibe-block block-purple" style="--i:3"><span class="vibe-letter">R</span></div>
+        <div class="vibe-block block-orange" style="--i:4"><span class="vibe-letter">A</span></div>
+      </div>
+
+      <!-- Cyber Pill Badge -->
+      <div class="vibe-role-badge">
+        <span>DEVELOPER. DESIGNER. VIBE-CODER.</span>
+      </div>
+
+      <!-- Loading Status Text -->
+      <div class="vibe-status-wrap">
+        <span class="vibe-status-text" id="loaderStatusMsg">BOOTING RUDRA KERNEL...</span>
+      </div>
+
+      <!-- Candy Striped Neo-Brutalist Progress Bar -->
+      <div class="vibe-progress-bar-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="loaderProgressBar">
+        <div class="vibe-progress-bar-fill" id="loaderBarFill"></div>
+      </div>
+
+      <!-- Percentage Indicator -->
+      <div class="vibe-percent-text">
+        <span id="loaderPercent">0</span>%
+      </div>
+    </div>
+  </div>
+
+  <!-- CUSTOM CURSOR BLOB -->
+  <div class="custom-cursor" id="customCursor">
+    <span class="cursor-label" id="cursorLabel"></span>
+  </div>
+
+  <!-- Background effects -->
+  <canvas id="heroCanvas" class="hero-canvas"></canvas>
+  <div class="bg-grid"></div>
+  <div class="bg-gradient-orb orb-1"></div>
+  <div class="bg-gradient-orb orb-2"></div>
+
+  <!-- FIXED LEFT SOCIAL BAR (AS IN SCREENSHOT) -->
+  <aside class="fixed-left-socials" aria-label="Social links">
+    <a href="https://github.com/Rudrakathoke2006" target="_blank" rel="noopener" aria-label="GitHub" class="fixed-social-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+    </a>
+    <a href="https://linkedin.com/in/rudra-kathoke" target="_blank" rel="noopener" aria-label="LinkedIn" class="fixed-social-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+    </a>
+    <a href="https://x.com" target="_blank" rel="noopener" aria-label="X (Twitter)" class="fixed-social-link">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram" class="fixed-social-link">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
+  </aside>
+
+  <!-- GEN Z FLOATING RIGHT QUICK-NAV DOCK (MATCHING SCREENSHOT) -->
+  <aside class="floating-right-dock" id="floatingRightDock" aria-label="Quick Navigation">
+    <a href="#hero" class="dock-avatar-badge" aria-label="Rudra Profile">
+      <span class="dock-avatar-letter">R</span>
+      <span class="dock-notification-dot">⚡</span>
+    </a>
+    <div class="dock-links">
+      <a href="#about" class="dock-link" data-label="About" aria-label="About">
+        <span class="dock-icon">👤</span>
+        <span class="dock-text">ABOUT</span>
+      </a>
+      <a href="#skills" class="dock-link" data-label="Skills" aria-label="Skills">
+        <span class="dock-icon">🧠</span>
+        <span class="dock-text">SKILLS</span>
+      </a>
+      <a href="#projects" class="dock-link" data-label="Projects" aria-label="Projects">
+        <span class="dock-icon">🚀</span>
+        <span class="dock-text">WORK</span>
+      </a>
+      <a href="#hackathons" class="dock-link" data-label="Achievements" aria-label="Achievements">
+        <span class="dock-icon">🏆</span>
+        <span class="dock-text">AWARDS</span>
+      </a>
+      <a href="#contact" class="dock-link" data-label="Contact" aria-label="Contact">
+        <span class="dock-icon">💬</span>
+        <span class="dock-text">CONTACT</span>
+      </a>
+    </div>
+    <a href="assets/resume.pdf" target="_blank" class="dock-bolt-btn" aria-label="Resume & Hire">
+      <span>⚡</span>
+    </a>
+  </aside>
+
+  <!-- FIXED BOTTOM RIGHT RESUME BADGE (AS IN SCREENSHOT) -->
+  <a href="assets/resume.pdf" target="_blank" class="fixed-resume-badge" id="floatingResumeBtn" aria-label="View Resume">
+    <span>RESUME</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+  </a>
+
+  <!-- SYSTEM TICKER BAR -->
+  <div class="system-ticker">
+    <div class="ticker-content">
+      <span class="ticker-item"><span class="ticker-dot"></span> Currently: Building, Breaking, Shipping</span>
+      <span class="ticker-item">⚡ CGPA: 9.2 / 10.0 (High Distinction)</span>
+      <span class="ticker-item">🎓 RBU NAGPUR B.TECH CSE '28</span>
+      <span class="ticker-item">💼 2 JAVA BACKEND INTERNSHIPS</span>
+      <span class="ticker-item">🏆 10+ HACKATHONS COMPETED</span>
+      <span class="ticker-item">🐅 PUGMARK WILDLIFE AI</span>
+      <span class="ticker-item">🔑 SHA-256 SECURE ARCHITECTURE</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="logo-bracket">[</span>RK<span class="logo-bracket">]</span>
+        <span class="logo-sub">JAVA.AI</span>
+      </a>
+      <div class="nav-center-email">
+        <a href="mailto:rudrakathoke@gmail.com" class="nav-email-link">rudrakathoke@gmail.com</a>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#what-i-do">What I Do</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Timeline</a></li>
+        <li><a href="#projects">Work</a></li>
+        <li><a href="#hackathons">Awards</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="nav-btn-xray" id="xrayToggle" aria-label="Toggle X-Ray Proof of Work Mode">
+          <span class="xray-toggle-text">X-RAY: OFF</span>
+        </button>
+        <button class="sound-toggle" id="soundToggle" aria-label="Toggle Sound Effects">
+          <span class="sound-icon">🔊</span>
+        </button>
+        <a href="#contact" class="nav-btn-hire" id="navHireBtn" aria-label="Hire Rudra">
+          <span>⚡ HIRE ME</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== SCREEN 1: COLD MINIMAL FULLSCREEN INTRO ===== -->
+  <section class="cold-intro-screen" id="coldIntro" aria-label="Rudra Kathoke Introduction">
+    <!-- Ambient Cold Geometric / Sci-Fi Backing -->
+    <div class="cold-ambient-bg" aria-hidden="true">
+      <div class="cold-orb-primary"></div>
+      <div class="cold-orb-secondary"></div>
+      <div class="cold-grid-mesh"></div>
+      <!-- GIANT SHADOW WATERMARK (MATCHING SECOND IMAGE) -->
+      <div class="cold-shadow-watermark" id="coldShadowWatermark">RUDRA KATHOKE</div>
+    </div>
+
+    <!-- Center Stage: Cold Font Full Screen Name & Profession -->
+    <div class="cold-hero-stage">
+      <div class="cold-status-kicker" aria-hidden="true">
+        <span class="cold-kicker-dot"></span>
+        <span class="cold-kicker-text">PORTFOLIO // 2026</span>
+      </div>
+
+      <h1 class="cold-hero-name" aria-label="RUDRA KATHOKE">
+        <span class="cold-char-group">RUDRA</span>
+        <span class="cold-char-group cold-gradient-accent">KATHOKE</span>
+      </h1>
+
+      <div class="cold-profession-row">
+        <span class="cold-role-tag">VIBE CODER</span>
+        <span class="cold-role-separator">//</span>
+        <span class="cold-role-tag">WEB DEVELOPER</span>
+      </div>
+    </div>
+
+    <!-- Sleek Cold Scroll Cue -->
+    <a href="#securityVault" class="cold-scroll-cue" id="coldScrollBtn" aria-label="Scroll down to Security Vault">
+      <span class="cold-cue-label">SCROLL TO SECURE VAULT</span>
+      <div class="cold-cue-indicator">
+        <span class="cold-cue-pulse"></span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+    </a>
+  </section>
+
+  <!-- ===== SCREEN 2: SCROLL-DRIVEN BLAST DOORS & VAULT LOCK SYSTEM ===== -->
+  <section class="vault-section" id="securityVault" aria-label="Security Clearance Vault">
+    <div class="vault-sticky-viewport">
+      <!-- Background Warning Strip & Project Watermark (RUDRA'S REAL PROJECTS) -->
+      <div class="vault-bg-canvas">
+        <div class="vault-dots-pattern"></div>
+        <div class="vault-watermark-text" aria-hidden="true">
+          <div class="watermark-row">🐅 PUGMARK WILDLIFE AI /// ⛓️ CHAINSENTINEL SIH-26146 /// 🔒 SECURE DMS SHA-256</div>
+          <div class="watermark-row big-row">RUDRA KATHOKE /// SYSTEM SECURITY LOCKED</div>
+          <div class="watermark-row">☕ JAVA BACKEND ARCHITECT /// 🧠 AI SYSTEMS /// 🎓 RBU NAGPUR 9.2 CGPA</div>
+        </div>
+      </div>
+
+      <!-- LEFT BLAST DOOR (CYBER VIOLET WITH HAZARD STRIPES & INTERLOCK TABS) -->
+      <div class="blast-door door-left" id="doorLeft">
+        <div class="door-panel-pink">
+          <div class="door-halftone-dots"></div>
+          <!-- Corner Screws / Rivets -->
+          <div class="door-rivet rivet-tl">⊝</div>
+          <div class="door-rivet rivet-bl">⊝</div>
+          <!-- Interlocking Tabs -->
+          <div class="door-tab tab-orange tab-orange-1"></div>
+          <div class="door-tab tab-orange tab-orange-2"></div>
+        </div>
+        <!-- Hazard Border -->
+        <div class="hazard-stripes-edge edge-left"></div>
+      </div>
+
+      <!-- RIGHT BLAST DOOR (CYBER CYAN WITH HAZARD STRIPES & INTERLOCK TAB) -->
+      <div class="blast-door door-right" id="doorRight">
+        <!-- Hazard Border -->
+        <div class="hazard-stripes-edge edge-right"></div>
+        <div class="door-panel-cyan">
+          <div class="door-halftone-dots"></div>
+          <!-- Corner Screws / Rivets -->
+          <div class="door-rivet rivet-tr">⊝</div>
+          <div class="door-rivet rivet-br">⊝</div>
+          <!-- Interlocking Tab -->
+          <div class="door-tab tab-green tab-green-1"></div>
+        </div>
+      </div>
+
+      <!-- CENTER VAULT LOCK MECHANISM -->
+      <div class="vault-lock-assembly" id="vaultLockAssembly">
+        <div class="vault-wheel-outer" id="vaultWheelOuter">
+          <!-- Rivets Ring -->
+          <div class="vault-rivets-circle">
+            <span class="v-rivet" style="--deg:0deg">⊝</span>
+            <span class="v-rivet" style="--deg:30deg">⊝</span>
+            <span class="v-rivet" style="--deg:60deg">⊝</span>
+            <span class="v-rivet" style="--deg:90deg">⊝</span>
+            <span class="v-rivet" style="--deg:120deg">⊝</span>
+            <span class="v-rivet" style="--deg:150deg">⊝</span>
+            <span class="v-rivet" style="--deg:180deg">⊝</span>
+            <span class="v-rivet" style="--deg:210deg">⊝</span>
+            <span class="v-rivet" style="--deg:240deg">⊝</span>
+            <span class="v-rivet" style="--deg:270deg">⊝</span>
+            <span class="v-rivet" style="--deg:300deg">⊝</span>
+            <span class="v-rivet" style="--deg:330deg">⊝</span>
+          </div>
+
+          <!-- Segmented Ring -->
+          <div class="vault-gear-ring"></div>
+
+          <!-- Spiky Cog -->
+          <div class="vault-spiky-cog" id="vaultSpikyCog">
+            <svg viewBox="0 0 100 100" width="100%" height="100%">
+              <polygon points="50,4 63,26 89,18 80,44 100,60 74,70 66,96 46,82 24,96 26,70 0,60 20,44 11,18 37,26" fill="#9D4EDD" stroke="#000" stroke-width="4.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <!-- Center Lens with Light Indicator -->
+          <div class="vault-center-core" id="vaultCenterCore">
+            <div class="vault-status-indicator" id="vaultStatusLight"></div>
+          </div>
+        </div>
+
+        <!-- Pop-out "SECURED! 🔒" Badge -->
+        <div class="vault-secured-badge" id="vaultSecuredBadge">
+          <span class="secured-text">SECURED!</span>
+          <span class="secured-icon">🔒</span>
+        </div>
+      </div>
+
+      <!-- Scroll Directive HUD hint -->
+      <div class="vault-scroll-hint" id="vaultScrollHint">
+        <span class="scroll-hint-bar"></span>
+        <span class="scroll-hint-text">SCROLL DOWN TO UNLOCK & REVEAL PORTFOLIO</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SCREEN 3: MAIN PORTFOLIO HERO (IMAGE 1 & 3: PROPERLY ALIGNED) ===== -->
+  <section class="hero main-portfolio-hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          <span>AVAILABLE FOR HIRE, FREELANCING & COLLABORATION</span>
+        </div>
+        <h1 class="hero-title" id="heroHeadline" aria-label="RUDRA KATHOKE">
+          <span class="letter-reveal-group" aria-hidden="true">
+            <span class="char">R</span><span class="char">U</span><span class="char">D</span><span class="char">R</span><span class="char">A</span>
+          </span>
+          <span class="letter-reveal-group gradient-text" aria-hidden="true">
+            <span class="char">K</span><span class="char">A</span><span class="char">T</span><span class="char">H</span><span class="char">O</span><span class="char">K</span><span class="char">E</span>
+          </span>
+        </h1>
+        <p class="hero-tagline">Architecting high-throughput Java backends, OpenCV/YOLO wildlife intelligence, & gasless Web3 smart contracts.</p>
+        
+        <div class="hero-roles">
+          <span class="hero-role"><span class="role-icon">☕</span> Java Backend Architect</span>
+          <span class="hero-role"><span class="role-icon">🧠</span> AI/ML Systems Engineer</span>
+          <span class="hero-role"><span class="role-icon">⚡</span> Vibe Coder</span>
+        </div>
+        
+        <div class="hero-ctas">
+          <a href="assets/resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-hero-resume" id="heroGetResumeBtn">
+            <span>📄 GET RESUME</span>
+            <span class="btn-arrow">↗</span>
+          </a>
+          <a href="#projects" class="btn btn-primary">
+            <span>Explore Work</span>
+            <span class="btn-arrow">➔</span>
+          </a>
+          <a href="#contact" class="btn btn-ghost">
+            <span>Hire Me</span>
+          </a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://linkedin.com/in/rudrakathoke2006" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="https://github.com/Rudrakathoke2006" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="mailto:rudrakathoke1405@gmail.com" aria-label="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <!-- INTERACTIVE CYBER TERMINAL -->
+        <div class="cyber-terminal">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="terminal-title">rudra@rbu-system:~</span>
+            <span class="terminal-badge">LIVE_CLI</span>
+          </div>
+          <div class="terminal-body" id="terminalOutput">
+            <div class="term-line prompt-line">
+              <span class="term-usr">rudra@system:~$</span> <span class="term-cmd">fetch --profile</span>
+            </div>
+            <div class="term-line info-line">NAME &nbsp;&nbsp;&nbsp;: Rudra Kathoke</div>
+            <div class="term-line info-line">COLLEGE : Ramdeobaba University (RBU Nagpur)</div>
+            <div class="term-line info-line">DEGREE &nbsp;: B.Tech CSE (2024-2028)</div>
+            <div class="term-line info-line highlight-green">CGPA &nbsp;&nbsp;&nbsp;: 9.2 / 10.0 (High Distinction)</div>
+            <div class="term-line info-line">STACK &nbsp;&nbsp;: Java, Python, FastAPI, JSP/Servlets, Web3</div>
+            <div class="term-line prompt-line mt-2">
+              <span class="term-usr">rudra@system:~$</span> <span class="term-cursor">█</span>
+            </div>
+          </div>
+          <div class="terminal-quick-cmds">
+            <button class="term-btn" data-cmd="projects">./projects.sh</button>
+            <button class="term-btn" data-cmd="skills">./skills.sh</button>
+            <button class="term-btn" data-cmd="hackathons">./awards.sh</button>
+            <button class="term-btn" data-cmd="clear">clear</button>
+          </div>
+        </div>
+
+        <div class="hero-float-card card-cgpa">
+          <span class="card-value">9.2</span>
+          <span class="card-label">CGPA (RBU)</span>
+        </div>
+        <div class="hero-float-card card-hacks">
+          <span class="card-value">10+</span>
+          <span class="card-label">Hackathons</span>
+        </div>
+        <div class="hero-float-card card-projects">
+          <span class="card-value">15+</span>
+          <span class="card-label">Systems Built</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== UNLOCKED PORTFOLIO ===== -->
+  <!-- ===== WHAT I DO (CORE CAPABILITIES // NO WALLPAPER // 100% UNIFIED NEO-BRUTALIST CARDS) ===== -->
+  <section class="what-i-do-section" id="what-i-do">
+    <div class="container reveal what-do-inner-wrap">
+      <!-- CENTERED & ALIGNED SECTION HEADER -->
+      <div class="what-do-header">
+        <div class="what-do-header-top">
+          <span class="section-label">System Architecture // Applied Capabilities</span>
+          <div class="video-hud-status">
+            <span class="hud-pulse-dot"></span>
+            <span class="hud-status-text">SYSTEMS UNLOCKED // PRODUCTION READY</span>
+          </div>
+        </div>
+        <h2 class="what-do-big-title">WHAT I <span class="gradient-text">DO</span></h2>
+        <p class="what-do-lead">
+          Architecting high-throughput Java microservices, production AI & RAG pipelines, and end-to-end full-stack web and mobile systems.
+        </p>
+      </div>
+
+      <!-- ALIGNED 3-COLUMN CORNER-BRACKET CYBER CARDS -->
+      <div class="what-do-cards-aligned-grid">
+        <!-- CARD 1: JAVA BACKEND DEVELOPER -->
+        <div class="what-do-card expanded tilt-card" data-role="backend">
+          <div class="corner-bracket corner-tl"></div>
+          <div class="corner-bracket corner-tr"></div>
+          <div class="corner-bracket corner-bl"></div>
+          <div class="corner-bracket corner-br"></div>
+          
+          <div class="what-do-card-header">
+            <div class="what-do-card-info">
+              <span class="card-role-tag">01 // CORE_BACKEND</span>
+              <h3 class="what-do-title">JAVA BACKEND DEVELOPER</h3>
+              <p class="what-do-sub">High-throughput microservices & secure architectures</p>
+            </div>
+          </div>
+          
+          <p class="what-do-desc">
+            Architecting enterprise-grade Java backends, multi-threaded pipelines, SHA-256 salted password hashing, DAO pattern architectures, and Tomcat servlet engines.
+          </p>
+
+          <div class="what-do-drawer">
+            <div class="skillset-label">Skillset & Tools</div>
+            <div class="skillset-badges">
+              <span class="skill-badge">Java 17 / 21</span>
+              <span class="skill-badge">Spring Boot 3</span>
+              <span class="skill-badge">JSP / Servlets</span>
+              <span class="skill-badge">JDBC & JPA</span>
+              <span class="skill-badge">MySQL</span>
+              <span class="skill-badge">DAO Pattern</span>
+              <span class="skill-badge">Apache Tomcat</span>
+              <span class="skill-badge">Multithreading</span>
+              <span class="skill-badge">Pessimistic Locking</span>
+              <span class="skill-badge">REST APIs</span>
+            </div>
+            <div class="drawer-orb-glow"></div>
+          </div>
+        </div>
+
+        <!-- CARD 2: AI ENGINEER -->
+        <div class="what-do-card expanded tilt-card" data-role="ai">
+          <div class="corner-bracket corner-tl"></div>
+          <div class="corner-bracket corner-tr"></div>
+          <div class="corner-bracket corner-bl"></div>
+          <div class="corner-bracket corner-br"></div>
+          
+          <div class="what-do-card-header">
+            <div class="what-do-card-info">
+              <span class="card-role-tag">02 // AI_ENGINEERING</span>
+              <h3 class="what-do-title">AI ENGINEER</h3>
+              <p class="what-do-sub">Intelligent systems, from model to production API</p>
+            </div>
+          </div>
+          
+          <p class="what-do-desc">
+            Building end-to-end AI pipelines: ML model training and evaluation, LLM-powered applications, RAG architectures with vector search, and FastAPI inference services deployed for real-time use.
+          </p>
+
+          <div class="what-do-drawer">
+            <div class="skillset-label">Skillset & Tools</div>
+            <div class="skillset-badges">
+              <span class="skill-badge">Python</span>
+              <span class="skill-badge">FastAPI</span>
+              <span class="skill-badge">Scikit-learn</span>
+              <span class="skill-badge">PyTorch</span>
+              <span class="skill-badge">LLM APIs</span>
+              <span class="skill-badge">RAG Pipelines</span>
+              <span class="skill-badge">Vector Databases</span>
+              <span class="skill-badge">Prompt Engineering</span>
+              <span class="skill-badge">Pandas / NumPy</span>
+              <span class="skill-badge">Model Deployment</span>
+            </div>
+            <div class="drawer-orb-glow"></div>
+          </div>
+        </div>
+
+        <!-- CARD 3: FULL STACK DEVELOPER -->
+        <div class="what-do-card expanded tilt-card" data-role="fullstack">
+          <div class="corner-bracket corner-tl"></div>
+          <div class="corner-bracket corner-tr"></div>
+          <div class="corner-bracket corner-bl"></div>
+          <div class="corner-bracket corner-br"></div>
+          
+          <div class="what-do-card-header">
+            <div class="what-do-card-info">
+              <span class="card-role-tag">03 // FULL_STACK</span>
+              <h3 class="what-do-title">FULL STACK DEVELOPER</h3>
+              <p class="what-do-sub">End-to-end products, from database to pixel</p>
+            </div>
+          </div>
+          
+          <p class="what-do-desc">
+            Shipping complete web and mobile products: responsive Next.js frontends, FastAPI and Spring Boot backends, PostgreSQL data layers, JWT authentication, and cross-platform Flutter apps.
+          </p>
+
+          <div class="what-do-drawer">
+            <div class="skillset-label">Skillset & Tools</div>
+            <div class="skillset-badges">
+              <span class="skill-badge">Next.js</span>
+              <span class="skill-badge">React</span>
+              <span class="skill-badge">TypeScript</span>
+              <span class="skill-badge">Flutter</span>
+              <span class="skill-badge">FastAPI</span>
+              <span class="skill-badge">Spring Boot</span>
+              <span class="skill-badge">PostgreSQL</span>
+              <span class="skill-badge">JWT Auth</span>
+              <span class="skill-badge">REST APIs</span>
+              <span class="skill-badge">Docker</span>
+              <span class="skill-badge">Git / CI</span>
+            </div>
+            <div class="drawer-orb-glow"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TECH STACK CONTINUOUS SCROLLING MARQUEE RIBBON ===== -->
+  <div class="tech-marquee-wrapper" aria-label="Core Technology Skills Marquee">
+    <div class="marquee-track" id="marqueeTrack">
+      <div class="marquee-content">
+        <span class="marquee-item"><span class="m-icon">☕</span> Java 17</span>
+        <span class="marquee-item"><span class="m-icon">🌱</span> Spring Boot 3</span>
+        <span class="marquee-item"><span class="m-icon">⚡</span> FastAPI</span>
+        <span class="marquee-item"><span class="m-icon">🐍</span> Python</span>
+        <span class="marquee-item"><span class="m-icon">🐘</span> PostgreSQL + pgvector</span>
+        <span class="marquee-item"><span class="m-icon">🐅</span> OpenCV & YOLOv8</span>
+        <span class="marquee-item"><span class="m-icon">🔥</span> PyTorch</span>
+        <span class="marquee-item"><span class="m-icon">🐳</span> Docker Compose</span>
+        <span class="marquee-item"><span class="m-icon">⛓️</span> Solidity & Web3</span>
+        <span class="marquee-item"><span class="m-icon">🔒</span> SHA-256 Architecture</span>
+        <span class="marquee-item"><span class="m-icon">🐱</span> Apache Tomcat / Servlets</span>
+        <span class="marquee-item"><span class="m-icon">⚛️</span> React & Next.js</span>
+        <span class="marquee-item"><span class="m-icon">📐</span> C4 System Architecture</span>
+        <span class="marquee-item"><span class="m-icon">🗺️</span> GIS KDE Territory Mapping</span>
+        <span class="marquee-item"><span class="m-icon">🛡️</span> OWASP Top 10 Hardening</span>
+      </div>
+      <!-- Duplicate content for seamless infinite loop -->
+      <div class="marquee-content" aria-hidden="true">
+        <span class="marquee-item"><span class="m-icon">☕</span> Java 17</span>
+        <span class="marquee-item"><span class="m-icon">🌱</span> Spring Boot 3</span>
+        <span class="marquee-item"><span class="m-icon">⚡</span> FastAPI</span>
+        <span class="marquee-item"><span class="m-icon">🐍</span> Python</span>
+        <span class="marquee-item"><span class="m-icon">🐘</span> PostgreSQL + pgvector</span>
+        <span class="marquee-item"><span class="m-icon">🐅</span> OpenCV & YOLOv8</span>
+        <span class="marquee-item"><span class="m-icon">🔥</span> PyTorch</span>
+        <span class="marquee-item"><span class="m-icon">🐳</span> Docker Compose</span>
+        <span class="marquee-item"><span class="m-icon">⛓️</span> Solidity & Web3</span>
+        <span class="marquee-item"><span class="m-icon">🔒</span> SHA-256 Architecture</span>
+        <span class="marquee-item"><span class="m-icon">🐱</span> Apache Tomcat / Servlets</span>
+        <span class="marquee-item"><span class="m-icon">⚛️</span> React & Next.js</span>
+        <span class="marquee-item"><span class="m-icon">📐</span> C4 System Architecture</span>
+        <span class="marquee-item"><span class="m-icon">🗺️</span> GIS KDE Territory Mapping</span>
+        <span class="marquee-item"><span class="m-icon">🛡️</span> OWASP Top 10 Hardening</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ABOUT: WHO AM I? (VIBE CODING PHILOSOPHY & CAPABILITIES) ===== -->
+  <section class="about" id="about">
+    <div class="container reveal">
+      <div class="about-section-header">
+        <span class="section-label">System Architecture // Bio & Philosophy</span>
+        <h2 class="section-title">
+          WHO AM I? <span class="gradient-text">RUDRA</span>
+        </h2>
+        <p class="about-lead">
+          I'm a developer who thrives on <span class="kw-highlight kw-pink">vibe coding</span>: shaping ideas into polished products fast, with <span class="kw-highlight kw-cyan">AI as a creative partner</span> and <span class="kw-highlight kw-green">strong engineering judgment</span> guiding every build.
+        </p>
+      </div>
+
+      <!-- MAIN BENTO CONTAINER -->
+      <div class="about-bento-grid">
+        
+        <!-- CARD 1: THE CORE THEORY & MANIFESTO WITH HIGHLIGHTED KEYWORDS -->
+        <div class="about-card about-manifesto-card">
+          <div class="about-card-badge-row">
+            <span class="manifesto-tag tag-purple">⚡ VIBE CODING MANIFESTO</span>
+            <span class="manifesto-tag tag-cyan">AI PARTNER + JUDGMENT</span>
+            <span class="manifesto-pill">RUDRA // 2026</span>
+          </div>
+
+          <div class="manifesto-paragraphs">
+            <p class="manifesto-p lead-p">
+              I specialize in <span class="kw-highlight kw-yellow">Modern Web Development</span> and rapid product engineering. I'm a developer who thrives on <span class="kw-highlight kw-pink">vibe coding</span>: shaping ideas into polished products fast, with <span class="kw-highlight kw-cyan">AI as a creative partner</span> and <span class="kw-highlight kw-green">strong engineering judgment</span> guiding every build.
+            </p>
+            <p class="manifesto-p">
+              My focus is turning concepts into working websites and apps in record time, using <span class="kw-highlight kw-purple">AI-assisted workflows</span> to prototype, iterate, and ship while keeping the code <span class="kw-highlight kw-green">clean, structured, and production-ready</span>.
+            </p>
+            
+            <div class="manifesto-pullquote">
+              <div class="quote-bar"></div>
+              <div class="quote-content">
+                <span class="quote-symbol">“</span>
+                <p>I care about the details that make a product feel premium: <span class="kw-highlight kw-orange">sharp UI, smooth motion, fast performance</span>. <strong>Beyond the vibe, I review, refactor, and understand every line that ships.</strong></p>
+              </div>
+            </div>
+
+            <p class="manifesto-p">
+              I'm especially interested in where creativity meets AI-assisted code: <span class="kw-highlight kw-cyan">rapid product building</span>, modern interfaces, and digital experiences that stand out from the crowd.
+            </p>
+          </div>
+
+          <!-- Academic & Background Note -->
+          <div class="manifesto-footer-note">
+            <span class="note-icon">🎓</span>
+            <span>B.Tech Computer Science @ <strong>Ramdeobaba University (RBU Nagpur)</strong> • Maintaining <strong>9.2 CGPA</strong> • Java Backend Architect & Applied AI</span>
+          </div>
+        </div>
+
+        <!-- CARD 2: YEARS OF DEV & TELEMETRY HIGHLIGHTS -->
+        <div class="about-card about-telemetry-card">
+          <div class="about-card-badge-row">
+            <span class="manifesto-tag tag-gold">📊 VERIFIED TELEMETRY</span>
+            <span class="manifesto-tag tag-green">HIGH VELOCITY</span>
+          </div>
+
+          <!-- Hero Metric: Years of Development -->
+          <div class="hero-stat-highlight">
+            <span class="hero-stat-label">Years of Development</span>
+            <div class="hero-stat-number-wrap">
+              <span class="hero-stat-number">2</span>
+              <span class="hero-stat-unit">YEARS</span>
+            </div>
+            <div class="hero-stat-bar">
+              <div class="hero-stat-fill"></div>
+            </div>
+            <span class="hero-stat-tag">🚀 Fast Shipping & Rapid Learning Curve</span>
+          </div>
+
+          <div class="telemetry-metrics-grid">
+            <div class="telemetry-item">
+              <span class="tel-num fact-value">9.2</span>
+              <span class="tel-label">CGPA (RBU Nagpur)</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="tel-num fact-value">10+</span>
+              <span class="tel-label">Hackathons Competed</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="tel-num fact-value">2</span>
+              <span class="tel-label">Enterprise Internships</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="tel-num fact-value">15+</span>
+              <span class="tel-label">Production Repos</span>
+            </div>
+          </div>
+
+          <!-- Interactive Action Button -->
+          <div class="telemetry-action-wrap">
+            <a href="assets/resume.pdf" target="_blank" class="btn btn-hot-accent w-full" id="bentoResumeBtn">
+              <span>📄 View Verified Resume</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- WHAT I BRING (THE 7 CORE PILLARS MATRIX) -->
+      <div class="what-i-bring-wrap">
+        <div class="what-i-bring-header">
+          <span class="section-label">Applied Capabilities // Core Superpowers</span>
+          <h3 class="what-i-bring-title">WHAT I BRING</h3>
+          <p class="what-i-bring-sub">The main strengths I deliver to every project — fusing modern front-end excellence, high-coded UI, and production engineering judgment.</p>
+        </div>
+
+        <div class="bring-cards-grid">
+          <!-- Pillar 1: Modern Front-end -->
+          <div class="bring-card tilt-card" data-tilt>
+            <div class="bring-corner corner-tl"></div>
+            <div class="bring-corner corner-tr"></div>
+            <div class="bring-card-top">
+              <span class="bring-icon">💻</span>
+              <span class="bring-pillar-tag">FRONTEND</span>
+            </div>
+            <h4 class="bring-name">Modern Front-End</h4>
+            <p class="bring-desc">Architecting dynamic, responsive web applications using Next.js, React, TypeScript, and modern CSS systems for seamless user journeys.</p>
+          </div>
+
+          <!-- Pillar 2: High-Coded UI -->
+          <div class="bring-card tilt-card" data-tilt>
+            <div class="bring-corner corner-tl"></div>
+            <div class="bring-corner corner-tr"></div>
+            <div class="bring-card-top">
+              <span class="bring-icon">🎨</span>
+              <span class="bring-pillar-tag">AESTHETICS</span>
+            </div>
+            <h4 class="bring-name">High-Coded UI</h4>
+            <p class="bring-desc">Strong visual taste and aesthetic sense. Crafting standout digital interfaces with Gen Z neo-brutalist pop energy that capture attention instantly.</p>
+          </div>
+
+          <!-- Pillar 3: Smooth Motion -->
+          <div class="bring-card tilt-card" data-tilt>
+            <div class="bring-corner corner-tl"></div>
+            <div class="bring-corner corner-tr"></div>
+            <div class="bring-card-top">
+              <span class="bring-icon">✨</span>
+              <span class="bring-pillar-tag">INTERACTION</span>
+            </div>
+            <h4 class="bring-name">Smooth Motion</h4>
+            <p class="bring-desc">Interaction and animation design. Fluid GSAP scroll scrubbing, physics-driven micro-interactions, and motion that feels tactile and alive.</p>
+          </div>
+
+          <!-- Pillar 4: Product Thinking -->
+          <div class="bring-card tilt-card" data-tilt>
+            <div class="bring-corner corner-tl"></div>
+            <div class="bring-corner corner-tr"></div>
+            <div class="bring-card-top">
+              <span class="bring-icon">💡</span>
+              <span class="bring-pillar-tag">STRATEGY</span>
+            </div>
+            <h4 class="bring-name">Product Thinking</h4>
+            <p class="bring-desc">Turning concepts into working MVPs in hours, not weeks. User-first feature prioritization, rapid feedback loops, and shipping genuine utility.</p>
+          </div>
+
+          <!-- Pillar 5: Performance & Execution -->
+          <div class="bring-card tilt-card" data-tilt>
+            <div class="bring-corner corner-tl"></div>
+            <div class="bring-corner corner-tr"></div>
+            <div class="bring-card-top">
+              <span class="bring-icon">⚡</span>
+              <span class="bring-pillar-tag">VELOCITY</span>
+            </div>
+            <h4 class="bring-name">Performance & Execution</h4>
+            <p class="bring-desc">Sub-millisecond query execution, zero-bloat asset delivery, and fast shipping with an ultra-quick learning curve across new tech.</p>
+          </div>
+
+          <!-- Pillar 6: Engineering Judgment -->
+          <div class="bring-card tilt-card" data-tilt>
+            <div class="bring-corner corner-tl"></div>
+            <div class="bring-corner corner-tr"></div>
+            <div class="bring-card-top">
+              <span class="bring-icon">🛡️</span>
+              <span class="bring-pillar-tag">ARCHITECTURE</span>
+            </div>
+            <h4 class="bring-name">Engineering Judgment</h4>
+            <p class="bring-desc">Reviewing, debugging, and refactoring AI output. Enforcing secure architectures, DAO patterns, OWASP hardening, and audit-ready standards.</p>
+          </div>
+
+          <!-- Pillar 7: Year of Development -->
+          <div class="bring-card tilt-card bring-card-highlight" data-tilt>
+            <div class="bring-corner corner-tl"></div>
+            <div class="bring-corner corner-tr"></div>
+            <div class="bring-card-top">
+              <span class="bring-icon">🚀</span>
+              <span class="bring-pillar-tag tag-gold-accent">EXPERIENCE</span>
+            </div>
+            <h4 class="bring-name">Year of Development</h4>
+            <p class="bring-desc"><strong>2 YEARS</strong> of intensive, rapid development — spanning production Java microservices, OpenCV wildlife AI, and 10+ competitive hackathons.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- STICKERS & BADGES ROW -->
+      <div class="about-stickers-row">
+        <div class="sticker-badges">
+          <div class="sticker-badge badge-lime">VIBE CODER ⚡</div>
+          <div class="sticker-badge badge-lavender">MODERN WEB DEV 💻</div>
+          <div class="sticker-badge badge-cyan">2 YEARS DEV 🚀</div>
+          <div class="sticker-badge badge-pink">REVIEW EVERY LINE 🛡️</div>
+          <div class="sticker-badge badge-gold">RAPID MVP IN HOURS ⏱️</div>
+          <div class="sticker-badge badge-white">JAVA 21 + SPRING ☕</div>
+          <div class="sticker-badge badge-lime">HIGH-CODED UI 🎨</div>
+          <div class="sticker-badge badge-lavender">CGPA 9.2 RBU '28 🎓</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== SLIDING WINDOW TYPE ANIMATION (GEN Z NEO-BRUTALIST CURTAIN) ===== -->
+  <div class="sliding-window-portal" id="slidingWindow" aria-hidden="true">
+    <div class="sliding-window-track">
+      <div class="window-shutter shutter-top">
+        <div class="hazard-shutter-stripes"></div>
+        <div class="shutter-handle">▲ SLIDING WINDOW /// ELEVATING SYSTEM ▲</div>
+      </div>
+      <div class="window-aperture-content">
+        <div class="window-neon-badge">
+          <span class="aperture-icon">⚡</span>
+          <span>SYSTEM ARCHITECTURE & CAPABILITIES ENGINE</span>
+          <span class="aperture-icon">⚡</span>
+        </div>
+      </div>
+      <div class="window-shutter shutter-bottom">
+        <div class="shutter-handle">▼ SLIDING WINDOW /// ELEVATING SYSTEM ▼</div>
+        <div class="hazard-shutter-stripes"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ===== TECH STACK (STEPPED PYRAMID HONEYCOMB MATRIX WITH 3D CURSOR/SCROLL ENGINE & HUD POPUPS) ===== -->
+  <section class="tech-stack-pyramid-section" id="skills">
+    <!-- Interactive 3D WebGL Background Canvas (reactive to cursor move & scroll scrubbing) -->
+    <canvas id="techStackCanvas" class="tech-stack-bg-canvas" aria-hidden="true"></canvas>
+
+    <!-- Cursor Follower Ambient Glow Spotlight -->
+    <div class="tech-stack-cursor-glow" id="techStackCursorGlow" aria-hidden="true"></div>
+
+    <div class="tech-stack-aurora" id="techStackAurora"></div>
+    <div class="tech-stack-grid-mesh"></div>
+
+    <!-- Parallax Floating Cosmic Spheres -->
+    <div class="floating-purple-sphere cosmic-glow-orb" id="techSphere1"></div>
+    <div class="floating-cyan-sphere cosmic-glow-orb" id="techSphere2"></div>
+
+    <!-- FLOATING CYBER HUD TOOLTIP / POPUP (Anchors to hovered/active tech card) -->
+    <div id="techStackTooltip" class="tech-stack-popup-hud" role="tooltip" aria-hidden="true">
+      <div class="tech-popup-corner corner-tl"></div>
+      <div class="tech-popup-corner corner-tr"></div>
+      <div class="tech-popup-corner corner-bl"></div>
+      <div class="tech-popup-corner corner-br"></div>
+      
+      <div class="tech-popup-header">
+        <div class="tech-popup-icon-wrap" id="techPopupIcon"></div>
+        <div class="tech-popup-title-wrap">
+          <div class="tech-popup-title-row">
+            <h4 class="tech-popup-title" id="techPopupTitle">Java</h4>
+            <span class="tech-popup-level-badge" id="techPopupLevel">96% EXPERT</span>
+          </div>
+          <span class="tech-popup-category" id="techPopupCategory">Backend & Systems</span>
+        </div>
+      </div>
+
+      <p class="tech-popup-desc" id="techPopupDesc">High-throughput microservices, multi-threading, Spring Boot & DAO pattern architectures.</p>
+
+      <div class="tech-popup-meta">
+        <div class="tech-popup-row">
+          <span class="tech-meta-label">KEY PROOF:</span>
+          <span class="tech-meta-val" id="techPopupUse">Hospital DMS, ATM State Machine</span>
+        </div>
+        <div class="tech-popup-row">
+          <span class="tech-meta-label">TAGS:</span>
+          <div class="tech-meta-tags" id="techPopupTags"></div>
+        </div>
+      </div>
+
+      <div class="tech-popup-progress-wrap">
+        <div class="tech-popup-progress-label">
+          <span>Mastery Index</span>
+          <span id="techPopupPercent">96%</span>
+        </div>
+        <div class="tech-popup-progress-bar">
+          <div class="tech-popup-progress-fill" id="techPopupFill"></div>
+        </div>
+      </div>
+
+      <div class="tech-popup-pointer" id="techPopupPointer"></div>
+    </div>
+
+    <div class="container reveal">
+      <div class="tech-stack-header-wrap">
+        <h2 class="tech-stack-main-title">TECH STACK</h2>
+        <p class="tech-stack-sub-hint">⚡ Hover or tap any technology to inspect architectural proof & mastery index</p>
+      </div>
+
+      <div class="tech-matrix-pyramid">
+        <!-- ROW 1 (8 items: Core Languages) -->
+        <div class="tech-matrix-row row-1">
+          <div class="tech-icon-card" data-tech="Java">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#5382a1" d="M11.5 22.8s-1.8.2-1.3 1.2c.7 1.5 2.8 1.6 4.3 1.6 4.2 0 8.1-1.2 8.1-1.2s1.4-.4 1-.9c-.5-.6-2.6-.7-2.6-.7s4.1.2 4.4-1.1c.3-1.4-2.8-1.7-4.4-1.8-3.7-.2-7.5.3-9.5 2.9zm-1.8-4.2s-1.8.3-1.2 1.3c.7 1.2 2.6 1.3 4.1 1.3 3.4 0 6.6-.8 9.9-.9 2.7-.1 4.5.3 4.5.3s1.2-.4.8-.8c-.4-.5-2.2-.6-2.2-.6s3.3.1 3.5-.9c.2-1.1-2.1-1.4-3.5-1.5-3.3-.2-6.6.3-9.1 2.2-2.1 1.6-4.8-.4-6.8-1zm14.1 8.8c-2.4 1.5-6.8 1.9-9.9 1.9-2.9 0-5.7-.3-7.9-1.2-.7-.3-1.1.5-.5.8 2.5 1.3 5.5 1.7 8.4 1.7 3.5 0 8.3-.6 10.9-2.3.8-.5-.2-1.2-1-.9z"/><path fill="#e76f00" d="M17.1 2.5c1.4 1.7.9 3.2.1 4.7-.9 1.6-2.3 3-1.7 4.9.7-1.3 1.5-2.4 2.5-3.4 1.4-1.5 2.8-3.1 2-5.4-.5-.4-2.2-.8-2.9-.8zm-4.3 4c1 1.2.6 2.3.1 3.4-.6 1.2-1.6 2.2-1.2 3.5.5-.9 1.1-1.7 1.8-2.4 1-1.1 2-2.2 1.4-3.9-.4-.3-1.6-.6-2.1-.6zm7.8 7.3c-.3-.2-2.1.2-3.8.4-2.4.3-4.9.4-7.3.3-1.5 0-3.3-.2-3.3 1.2 0 1.2 1.5 1.6 2.5 1.8 3.5.7 7.2.4 10.7-.5 1.3-.4 2.1-1.7 1.2-3.2z"/></svg>
+            <span>Java</span>
+          </div>
+          <div class="tech-icon-card" data-tech="Python">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#3776ab" d="M15.9 3c-7 0-6.6 3-6.6 3l.01 3.1h6.7v1H6.8S3 9.7 3 16.7s3.3 6.8 3.3 6.8h2v-2.8s-.1-3.3 3.3-3.3h5.7s3.2.1 3.2-3.1V6.2S21 3 15.9 3zm-3.6 2.1c.7 0 1.2.5 1.2 1.2 0 .7-.5 1.2-1.2 1.2-.7 0-1.2-.5-1.2-1.2 0-.7.5-1.2 1.2-1.2z"/><path fill="#ffd43b" d="M16.1 29c7 0 6.6-3 6.6-3l-.01-3.1H16v-1h9.2s3.8.4 3.8-6.6-3.3-6.8-3.3-6.8h-2v2.8s.1 3.3-3.3 3.3h-5.7s-3.2-.1-3.2 3.1v8.1s-.5 3.2 4.6 3.2zm3.6-2.1c-.7 0-1.2-.5-1.2-1.2 0-.7.5-1.2 1.2-1.2.7 0 1.2.5 1.2 1.2 0 .7-.5 1.2-1.2 1.2z"/></svg>
+            <span>Python</span>
+          </div>
+          <div class="tech-icon-card" data-tech="C++">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#00599c" d="M28.4 8.5L17.7 2.3c-1-.6-2.3-.6-3.3 0L3.6 8.5C2.6 9.1 2 10.1 2 11.3v12.4c0 1.2.6 2.2 1.6 2.8l10.7 6.2c1 .6 2.3.6 3.3 0l10.7-6.2c1-.6 1.6-1.6 1.6-2.8V11.3c.1-1.2-.5-2.2-1.5-2.8z"/><path fill="#fff" d="M16.5 22.8c-3.8 0-6.8-3-6.8-6.8s3-6.8 6.8-6.8c2.4 0 4.5 1.2 5.7 3.1l-2.6 1.5c-.7-1.1-1.8-1.8-3.1-1.8-2.2 0-4 1.8-4 4s1.8 4 4 4c1.3 0 2.4-.7 3.1-1.8l2.6 1.5c-1.2 1.9-3.3 3.1-5.7 3.1zm6-7.3h1.8v-1.8h1.2v1.8h1.8v1.2h-1.8v1.8h-1.2v-1.8h-1.8v-1.2zm6.2 0h1.8v-1.8h1.2v1.8h1.8v1.2h-1.8v1.8h-1.2v-1.8h-1.8v-1.2z"/></svg>
+            <span>C++</span>
+          </div>
+          <div class="tech-icon-card" data-tech="C">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#00599c" d="M28.4 8.5L17.7 2.3c-1-.6-2.3-.6-3.3 0L3.6 8.5C2.6 9.1 2 10.1 2 11.3v12.4c0 1.2.6 2.2 1.6 2.8l10.7 6.2c1 .6 2.3.6 3.3 0l10.7-6.2c1-.6 1.6-1.6 1.6-2.8V11.3c.1-1.2-.5-2.2-1.5-2.8z"/><path fill="#fff" d="M17.5 23.5c-4.1 0-7.5-3.4-7.5-7.5s3.4-7.5 7.5-7.5c2.7 0 5 1.4 6.3 3.6l-2.9 1.7c-.8-1.3-2.1-2.1-3.4-2.1-2.4 0-4.3 1.9-4.3 4.3s1.9 4.3 4.3 4.3c1.4 0 2.6-.8 3.4-2.1l2.9 1.7c-1.3 2.2-3.6 3.6-6.3 3.6z"/></svg>
+            <span>C</span>
+          </div>
+          <div class="tech-icon-card" data-tech="JavaScript">
+            <svg class="tech-svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#f7df1e"/><path fill="#000" d="M19 20.8c.4.7.9 1.3 1.8 1.3.8 0 1.3-.3 1.3-1.1 0-.8-.5-1.1-1.5-1.5l-.5-.2c-1.5-.6-2.5-1.4-2.5-3.1 0-1.5 1.2-2.7 3-2.7 1.3 0 2.2.5 2.8 1.6l-1.4.9c-.3-.6-.7-.8-1.4-.8-.6 0-1.1.4-1.1.9 0 .6.4.9 1.3 1.3l.5.2c1.7.7 2.8 1.5 2.8 3.3 0 1.9-1.5 2.9-3.3 2.9-1.9 0-3.1-.9-3.7-2.1l1.4-.9zm-7.8.2c.3.5.5.9 1.1.9.6 0 1-.2 1-.9v-7.3h1.8v7.4c0 1.8-1 2.6-2.6 2.6-1.4 0-2.3-.7-2.7-1.7l1.4-1z"/></svg>
+            <span>JavaScript</span>
+          </div>
+          <div class="tech-icon-card" data-tech="TypeScript">
+            <svg class="tech-svg" viewBox="0 0 32 32"><rect width="32" height="32" rx="6" fill="#3178c6"/><path fill="#fff" d="M14.5 15h-3.4v10.5H8.7V15H5.3v-2.3h9.2V15zm5.7 6c.5.8 1.2 1.3 2.3 1.3 1 0 1.6-.5 1.6-1.2 0-.8-.7-1.2-1.9-1.7l-.7-.3c-2-.8-3.2-1.8-3.2-3.9 0-2 1.6-3.6 4-3.6 1.7 0 3 .7 3.8 2.1l-1.8 1.2c-.4-.8-1-1.1-1.9-1.1-.9 0-1.5.5-1.5 1.1 0 .7.5 1.1 1.7 1.6l.7.3c2.3.9 3.5 1.9 3.5 4 0 2.3-1.8 3.8-4.3 3.8-2.4 0-4-1.2-4.8-2.8l2-1.2z"/></svg>
+            <span>TypeScript</span>
+          </div>
+          <div class="tech-icon-card" data-tech="HTML5">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#e34f26" d="M5.4 28.5L2.8 3h26.4l-2.6 25.5L16 31.3l-10.6-2.8z"/><path fill="#ef652a" d="M16 29.2l8.7-2.3 2.2-21.7H16v24z"/><path fill="#ebebeb" d="M16 14.5h-4.3l-.3-3.4H16V7.7H7.7l.8 10.2H16v-3.4zm0 8.1l-.1.02-3.6-1-.2-2.6H8.7l.5 5.2 6.8 1.9V22.6z"/><path fill="#fff" d="M16 14.5h4.1l-.4 4.4-3.7 1v3.5l6.8-1.9.9-10.3H16v3.3zm0-6.8v3.4h7.9l.3-3.4H16z"/></svg>
+            <span>HTML5</span>
+          </div>
+          <div class="tech-icon-card" data-tech="CSS3">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#1572b6" d="M5.4 28.5L2.8 3h26.4l-2.6 25.5L16 31.3l-10.6-2.8z"/><path fill="#33a9dc" d="M16 29.2l8.7-2.3 2.2-21.7H16v24z"/><path fill="#ebebeb" d="M16 14.5H11.7l-.3-3.4H16V7.7H7.7l.8 10.2H16v-3.4zm0 8.1l-.1.02-3.6-1-.2-2.6H8.7l.5 5.2 6.8 1.9V22.6z"/><path fill="#fff" d="M16 14.5h4.1l-.4 4.4-3.7 1v3.5l6.8-1.9.9-10.3H16v3.3zm0-6.8v3.4h7.9l.3-3.4H16z"/></svg>
+            <span>CSS3</span>
+          </div>
+        </div>
+
+        <!-- ROW 2 (7 items: Backend & Frameworks) -->
+        <div class="tech-matrix-row row-2">
+          <div class="tech-icon-card" data-tech="Spring Boot">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#6db33f" d="M28.4 15.3c-.6-3.8-3.3-7.5-6.8-8.8-3.7-1.4-8-.6-11.2 1.7C6.7 10.9 4.3 15 4 19.4c-.3 4.2 1.7 8.3 5.3 10.5 3.5 2.1 8 2.1 11.6.2 3.8-2 6.5-5.9 7.3-10.2.2-1.5.3-3 .2-4.6zm-14.7 9.8c-2.4-.2-4.7-1.5-5.9-3.6-1.3-2.3-1.1-5.3.4-7.4 1.7-2.4 4.6-3.7 7.5-3.5 1.5.1 3 .6 4.3 1.4-2.1.2-4.1 1-5.6 2.5-2.2 2.1-2.9 5.3-2 8.1.4.9.8 1.7 1.3 2.5z"/></svg>
+            <span>Spring Boot</span>
+          </div>
+          <div class="tech-icon-card" data-tech="FastAPI">
+            <svg class="tech-svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="#05998b"/><path fill="#fff" d="M18.8 6l-9.4 11.2h6.2l-2.4 8.8 9.4-11.2h-6.2z"/></svg>
+            <span>FastAPI</span>
+          </div>
+          <div class="tech-icon-card" data-tech="React">
+            <svg class="tech-svg" viewBox="0 0 32 32"><ellipse cx="16" cy="16" rx="3.6" ry="3.6" fill="#61dafb"/><g stroke="#61dafb" stroke-width="1.8" fill="none"><ellipse cx="16" cy="16" rx="12.5" ry="4.8"/><ellipse cx="16" cy="16" rx="12.5" ry="4.8" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12.5" ry="4.8" transform="rotate(120 16 16)"/></g></svg>
+            <span>React</span>
+          </div>
+          <div class="tech-icon-card" data-tech="Next.js">
+            <svg class="tech-svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14.5" fill="#000" stroke="rgba(255,255,255,0.25)" stroke-width="1"/><path fill="#fff" d="M12.5 10v12h2.2v-7.1l6.8 7.1h2.2V10h-2.2v7.1L14.7 10h-2.2z"/></svg>
+            <span>Next.js</span>
+          </div>
+          <div class="tech-icon-card" data-tech="Tailwind CSS">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#38bdf8" d="M16 8.5c-4 0-6.5 2-7.5 6 1.5-2 3.25-2.75 5.25-2.25 1.14.28 1.96 1.11 2.86 2.03C18.08 15.75 19.86 17.5 24 17.5c4 0 6.5-2 7.5-6-1.5 2-3.25 2.75-5.25 2.25-1.14-.28-1.96-1.11-2.86-2.03C21.92 10.25 20.14 8.5 16 8.5zm-8 7c-4 0-6.5 2-7.5 6 1.5-2 3.25-2.75 5.25-2.25 1.14.28 1.96 1.11 2.86 2.03C9.92 22.75 11.7 24.5 15.86 24.5c4 0 6.5-2 7.5-6-1.5 2-3.25 2.75-5.25 2.25-1.14-.28-1.96-1.11-2.86-2.03C13.78 17.25 12 15.5 8 15.5z"/></svg>
+            <span>Tailwind</span>
+          </div>
+          <div class="tech-icon-card" data-tech="Node.js">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#5fa04e" d="M16 2.5l11.5 6.6v13.8L16 29.5 4.5 22.9V9.1L16 2.5z"/><path fill="#fff" d="M16 11.2c-2.8 0-4.5 1.3-4.5 3.3 0 2.8 3.8 2.5 3.8 3.8 0 .5-.4.8-1.2.8-.9 0-1.8-.4-2.5-.9l-.8 1.4c1 .7 2.1 1.1 3.3 1.1 2.9 0 4.6-1.4 4.6-3.4 0-2.8-3.8-2.6-3.8-3.8 0-.5.4-.8 1.1-.8.8 0 1.6.3 2.2.8l.8-1.4c-.9-.6-1.9-1-3-1z"/></svg>
+            <span>Node.js</span>
+          </div>
+          <div class="tech-icon-card" data-tech="JSP / Servlets">
+            <svg class="tech-svg" viewBox="0 0 32 32"><rect x="3" y="6" width="26" height="20" rx="4" fill="#e76f00"/><text x="16" y="19" font-family="monospace" font-size="8" font-weight="900" fill="#fff" text-anchor="middle">&lt;JSP/&gt;</text></svg>
+            <span>JSP/Servlets</span>
+          </div>
+        </div>
+
+        <!-- ROW 3 (6 items: AI, Computer Vision & Data) -->
+        <div class="tech-matrix-row row-3">
+          <div class="tech-icon-card" data-tech="OpenCV">
+            <svg class="tech-svg" viewBox="0 0 32 32"><circle cx="16" cy="10" r="5" fill="#ea2127"/><circle cx="16" cy="10" r="2.2" fill="#120c1a"/><circle cx="10" cy="21" r="5" fill="#5cb85c"/><circle cx="10" cy="21" r="2.2" fill="#120c1a"/><circle cx="22" cy="21" r="5" fill="#0275d8"/><circle cx="22" cy="21" r="2.2" fill="#120c1a"/></svg>
+            <span>OpenCV</span>
+          </div>
+          <div class="tech-icon-card" data-tech="YOLOv8">
+            <svg class="tech-svg" viewBox="0 0 32 32"><rect x="5" y="5" width="22" height="22" rx="3" fill="none" stroke="#00ff9d" stroke-width="2.2" stroke-dasharray="4 2"/><circle cx="16" cy="16" r="4.5" fill="#00ff9d"/><path d="M16 7v4M16 21v4M7 16h4M21 16h4" stroke="#00ff9d" stroke-width="2"/></svg>
+            <span>YOLOv8</span>
+          </div>
+          <div class="tech-icon-card" data-tech="PyTorch">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#ee4c2c" d="M18.8 5.2a12 12 0 1 0 5.4 13.9 12 12 0 0 0-4.2-6.5l-1.3 1.3a10.2 10.2 0 1 1-3-4.5v-3l3.1-1.2z"/><circle cx="22.5" cy="7.5" r="1.8" fill="#ee4c2c"/></svg>
+            <span>PyTorch</span>
+          </div>
+          <div class="tech-icon-card" data-tech="TensorFlow">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#ff6f00" d="M16 3l11 6.3v13.4L16 29 5 22.7V9.3L16 3zm0 3.2L8.2 10.7v9.4L16 24.6l7.8-4.5v-9.4L16 6.2z"/><path fill="#ffa000" d="M14 11h4v12h-4zM9 11h14v3.5H9z"/></svg>
+            <span>TensorFlow</span>
+          </div>
+          <div class="tech-icon-card" data-tech="Scikit-learn">
+            <svg class="tech-svg" viewBox="0 0 32 32"><circle cx="11" cy="16" r="7.5" fill="#f89939"/><circle cx="21" cy="16" r="7.5" fill="#3499cd" fill-opacity="0.85"/><path fill="#fff" d="M16 11.5a6.5 6.5 0 0 0 0 9 6.5 6.5 0 0 0 0-9z"/></svg>
+            <span>Scikit-learn</span>
+          </div>
+          <div class="tech-icon-card" data-tech="NumPy">
+            <svg class="tech-svg" viewBox="0 0 32 32"><rect x="4" y="4" width="24" height="24" rx="4" fill="#4d77cf"/><path fill="#fff" d="M10 23V9h2.5l6.5 9.5V9h2.5v14H19l-6.5-9.5V23H10z"/></svg>
+            <span>NumPy</span>
+          </div>
+        </div>
+
+        <!-- ROW 4 (5 items: Databases & Infrastructure) -->
+        <div class="tech-matrix-row row-4">
+          <div class="tech-icon-card" data-tech="PostgreSQL">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#336791" d="M16 3C8.8 3 3 8.8 3 16s5.8 13 13 13 13-5.8 13-13S23.2 3 16 3zm6.5 13.5c-.2.5-.5 1-.9 1.4-1.2 1.3-3.2 1.6-4.9 1.1-.5 1.5-.7 3.2-.8 4.8-.8.3-1.6.4-2.5.4-.1-1.8.2-3.8.7-5.5-1.1-.7-1.9-1.9-2.1-3.2-.3-1.7.5-3.4 1.9-4.3 1.6-1.1 3.8-1.1 5.4.1 1.7 1.2 2.6 3.3 2.1 5.2h1.1z"/></svg>
+            <span>PostgreSQL</span>
+          </div>
+          <div class="tech-icon-card" data-tech="MySQL">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#00758f" d="M16 3C8.8 3 3 8.8 3 16s5.8 13 13 13 13-5.8 13-13S23.2 3 16 3zm7.2 11.2c-.4 1.2-1.3 2.1-2.4 2.6-.9.4-1.9.5-2.8.2-1.3-.4-2.2-1.4-2.7-2.6-.3-.7-.4-1.5-.3-2.3.2-1.1.9-2 1.9-2.5 1.1-.5 2.4-.5 3.5 0 1.2.6 2 1.7 2.3 3 .1.5.1 1.1.5 1.6z"/><path fill="#f29111" d="M12.5 18.2c-.5.8-1.4 1.4-2.4 1.5-1 .1-2-.3-2.6-1.1-.6-.8-.7-1.9-.3-2.8.4-.9 1.3-1.5 2.3-1.6 1-.1 2 .3 2.6 1.1.3.4.4.9.4 1.4v1.5z"/></svg>
+            <span>MySQL</span>
+          </div>
+          <div class="tech-icon-card" data-tech="pgvector">
+            <svg class="tech-svg" viewBox="0 0 32 32"><ellipse cx="16" cy="8" rx="10" ry="3.5" fill="#336791"/><path d="M6 8v7c0 1.9 4.5 3.5 10 3.5s10-1.6 10-3.5V8" fill="none" stroke="#336791" stroke-width="2"/><path d="M6 15v7c0 1.9 4.5 3.5 10 3.5s10-1.6 10-3.5v-7" fill="none" stroke="#336791" stroke-width="2"/><path d="M16 14l4 4-4 4M20 18H11" stroke="#00ff9d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>pgvector</span>
+          </div>
+          <div class="tech-icon-card" data-tech="Docker">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#2496ed" d="M29.5 15.5c-.5-.4-1.7-.6-2.6-.3-.3-.7-.8-1.3-1.5-1.7l-.8-.5-.5.8c-.7 1.1-.9 2.5-.5 3.7-1.1.6-2.5.7-3.7.3-3.6-1.2-6.5.6-8.7 2.5-3 2.6-6.8 2.2-9.6 1.5l-.6-.2-.3.6c-.6 1.4-.4 3 .5 4.3 2.1 2.9 6.2 3.8 11.2 3.8 8.5 0 14.8-4.2 16.6-11.8.1-.4 0-.8-.1-1.1-.2-.6-.4-1.2-.5-1.6z"/><rect x="6" y="15" width="2.4" height="2" fill="#2496ed"/><rect x="9.2" y="15" width="2.4" height="2" fill="#2496ed"/><rect x="12.4" y="15" width="2.4" height="2" fill="#2496ed"/><rect x="9.2" y="12.2" width="2.4" height="2" fill="#2496ed"/><rect x="12.4" y="12.2" width="2.4" height="2" fill="#2496ed"/><rect x="15.6" y="12.2" width="2.4" height="2" fill="#2496ed"/><rect x="12.4" y="9.4" width="2.4" height="2" fill="#2496ed"/></svg>
+            <span>Docker</span>
+          </div>
+          <div class="tech-icon-card" data-tech="Apache Tomcat">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#f8dc75" d="M16 4c-6.6 0-12 5.4-12 12s5.4 12 12 12 12-5.4 12-12S22.6 4 16 4z"/><path fill="#d1a128" d="M10 11l3 4-2 3 5-1 3 3 1-5 4-2-5-2-1-4-3 3-5-1z"/><circle cx="13" cy="14" r="1.2" fill="#000"/><circle cx="19" cy="14" r="1.2" fill="#000"/><path d="M14 18c1 1 3 1 4 0" stroke="#000" stroke-width="1.2" fill="none"/></svg>
+            <span>Tomcat</span>
+          </div>
+        </div>
+
+        <!-- ROW 5 (4 items: Web3 & Code Repositories) -->
+        <div class="tech-matrix-row row-5">
+          <div class="tech-icon-card" data-tech="Solidity">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#656565" d="M19.6 4l-3.6 6.3 3.6 6.3h7.2L30.4 10.3 26.8 4z"/><path fill="#8a8a8a" d="M12.4 4L8.8 10.3l3.6 6.3h7.2L16 10.3 19.6 4z"/><path fill="#333333" d="M5.2 16.6l3.6 6.3 3.6-6.3H5.2z"/><path fill="#656565" d="M12.4 16.6L8.8 22.9l3.6 6.3h7.2L16 22.9l3.6-6.3z"/><path fill="#8a8a8a" d="M19.6 16.6l-3.6 6.3 3.6 6.3h7.2l3.6-6.3-3.6-6.3z"/></svg>
+            <span>Solidity</span>
+          </div>
+          <div class="tech-icon-card" data-tech="Web3.js">
+            <svg class="tech-svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" fill="#f16822"/><path fill="#fff" d="M16 7l6 10-6 3.5L10 17l6-10zm0 14.5l6-3.5-6 8-6-8 6 3.5z"/></svg>
+            <span>Web3.js</span>
+          </div>
+          <div class="tech-icon-card" data-tech="Git">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#f05032" d="M29.4 14.2L17.8 2.6c-.8-.8-2.1-.8-2.9 0l-2.7 2.7 3.7 3.7c.9-.3 1.9-.1 2.6.6.7.7.9 1.7.6 2.6l3.5 3.5c.9-.3 1.9-.1 2.6.6.9.9.9 2.5 0 3.4s-2.5.9-3.4 0c-.7-.7-.9-1.8-.6-2.7l-3.3-3.3v7.3c.3.2.5.4.6.6.9.9.9 2.5 0 3.4s-2.5.9-3.4 0c-.9-.9-.9-2.5 0-3.4.3-.3.6-.5 1-.6V9.9c-.4-.1-.7-.3-1-.6-.7-.7-.9-1.8-.6-2.7L8.4 2.8 2.6 8.6c-.8.8-.8 2.1 0 2.9l11.6 11.6c.8.8 2.1.8 2.9 0l12.3-12.3c.8-.8.8-2.1 0-2.9z"/></svg>
+            <span>Git</span>
+          </div>
+          <div class="tech-icon-card" data-tech="GitHub">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#fff" fill-rule="evenodd" d="M16 2C8.3 2 2 8.3 2 16.1c0 6.3 4.1 11.6 9.7 13.5.7.1 1-.3 1-.7v-2.5c-3.9.8-4.7-1.9-4.7-1.9-.6-1.6-1.5-2.1-1.5-2.1-1.3-.9.1-.9.1-.9 1.4.1 2.2 1.5 2.2 1.5 1.3 2.2 3.3 1.5 4.1 1.2.1-.9.5-1.5.9-1.9-3.1-.4-6.4-1.6-6.4-7 0-1.5.5-2.8 1.5-3.8-.1-.4-.7-1.8.1-3.7 0 0 1.2-.4 3.9 1.5 1.1-.3 2.4-.5 3.6-.5s2.5.2 3.6.5c2.7-1.9 3.9-1.5 3.9-1.5.8 1.9.3 3.3.1 3.7 1 1 1.5 2.3 1.5 3.8 0 5.4-3.3 6.6-6.4 7 .5.4 1 1.3 1 2.6v3.9c0 .4.3.8 1 .7 5.7-1.9 9.7-7.2 9.7-13.5C30 8.3 23.7 2 16 2z"/></svg>
+            <span>GitHub</span>
+          </div>
+        </div>
+
+        <!-- ROW 6 (3 items: Environment & Tooling) -->
+        <div class="tech-matrix-row row-6">
+          <div class="tech-icon-card" data-tech="Linux">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path d="M16 3c-4.4 0-7 3.5-7 8 0 2.5 1 4.5 2 6 0 0-3 3-3 7 0 3 4 5 10 5s10-2 10-5c0-4-3-7-3-7 1-1.5 2-3.5 2-6 0-4.5-2.6-8-7-8z" fill="#f0f0f0"/><path d="M16 3c-3.8 0-6 3-6 7.5 0 2 .8 3.8 1.5 5.2.4-.8 1-1.5 1.8-2 0-3 1.2-5.5 2.7-5.5s2.7 2.5 2.7 5.5c.8.5 1.4 1.2 1.8 2 .7-1.4 1.5-3.2 1.5-5.2 0-4.5-2.2-7.5-6-7.5z" fill="#2d3748"/><ellipse cx="13.5" cy="11" rx="1.2" ry="1.8" fill="#fff"/><ellipse cx="18.5" cy="11" rx="1.2" ry="1.8" fill="#fff"/><circle cx="13.5" cy="11.5" r="0.8" fill="#000"/><circle cx="18.5" cy="11.5" r="0.8" fill="#000"/><polygon points="14,14 18,14 16,17" fill="#f8a51d"/><ellipse cx="11" cy="27" rx="3.5" ry="1.8" fill="#f8a51d"/><ellipse cx="21" cy="27" rx="3.5" ry="1.8" fill="#f8a51d"/></svg>
+            <span>Linux</span>
+          </div>
+          <div class="tech-icon-card" data-tech="VS Code">
+            <svg class="tech-svg" viewBox="0 0 32 32"><path fill="#0065a9" d="M23.6 2.4L16.2 9.3l-9.8-7.5c-.8-.6-1.9-.4-2.4.4-.3.4-.4.9-.3 1.4v24.8c-.1.5 0 1 .3 1.4.5.8 1.6 1 2.4.4l9.8-7.5 7.4 6.9c.7.6 1.7.6 2.3 0l5.8-5.4c.6-.6.6-1.6 0-2.2L9.5 16l16.1-9.9c.6-.6.6-1.6 0-2.2l-2-1.5z"/><path fill="#007acc" d="M23.6 2.4c-.6-.4-1.4-.4-2 0L6.4 14.1l-2.7-2.1c-.6-.5-1.5-.4-2 .2-.2.3-.3.6-.3.9v5.8c0 .3.1.6.3.9.5.6 1.4.7 2 .2l2.7-2.1L21.6 29.6c.6.4 1.4.4 2 0l5.8-5.4c.6-.6.6-1.6 0-2.2L9.5 16l19.9-6c.6-.6.6-1.6 0-2.2l-5.8-5.4z"/><path fill="#1f9cf0" d="M23.6 2.4l-7.4 6.9 7.4 6.9 5.8-5.4c.6-.6.6-1.6 0-2.2l-5.8-6.2z"/></svg>
+            <span>VS Code</span>
+          </div>
+          <div class="tech-icon-card" data-tech="Postman">
+            <svg class="tech-svg" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="#ff6c37"/><path fill="#fff" d="M23.4 13.8c-.3-.2-.7-.1-.9.2l-3.2 4.1-2.1-2.1c-.3-.3-.7-.3-1 0-.3.3-.3.7 0 1l2.6 2.6c.1.1.3.2.5.2s.4-.1.5-.2l3.8-4.9c.2-.3.1-.7-.2-.9z"/><circle cx="12.5" cy="19.5" r="1.5" fill="#fff"/><circle cx="12.5" cy="15.5" r="1.5" fill="#fff"/></svg>
+            <span>Postman</span>
+          </div>
+        </div>
+
+        <!-- ROW 7 (2 items: Modern Intelligence & Architecture) -->
+        <div class="tech-matrix-row row-7">
+          <div class="tech-icon-card" data-tech="Gemini AI">
+            <svg class="tech-svg" viewBox="0 0 32 32"><defs><linearGradient id="gemGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#4e82ee"/><stop offset="50%" stop-color="#9b72cb"/><stop offset="100%" stop-color="#d96570"/></linearGradient></defs><path fill="url(#gemGrad)" d="M16 2C16 9.7 9.7 16 2 16c7.7 0 14 6.3 14 14 0-7.7 6.3-14 14-14-7.7 0-14-6.3-14-14z"/></svg>
+            <span>Gemini AI</span>
+          </div>
+          <div class="tech-icon-card" data-tech="REST APIs">
+            <svg class="tech-svg" viewBox="0 0 32 32"><rect x="3" y="6" width="26" height="20" rx="4" fill="#9333ea" fill-opacity="0.25" stroke="#c2a4ff" stroke-width="1.8"/><path d="M7 16h5M10 13l3 3-3 3M25 16h-5M22 13l-3 3 3 3" stroke="#00ff9d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="16" cy="16" r="2.2" fill="#c2a4ff"/></svg>
+            <span>REST APIs</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TIMELINE / JOURNEY (SIDE-BY-SIDE WITH 3D THREE.JS CODER WORKSTATION) ===== -->
+  <section class="timeline-journey-section" id="experience" aria-label="Journey & Experience">
+    <div class="container timeline-dual-container">
+      
+      <!-- SECTION HEADER -->
+      <div class="timeline-header-wrap">
+        <div class="timeline-tag-pill">
+          <span class="hud-pulse-dot"></span>
+          <span>CHRONOLOGICAL EVOLUTION // APPLIED PROOF OF WORK</span>
+        </div>
+        <h2 class="timeline-main-title">CAREER <span class="gradient-text">TIMELINE</span></h2>
+        <p class="timeline-sub-lead">
+          Scroll date-wise from foundations to current enterprise architecture. Watch the 3D cyber workstation compile live and scrub in sync as you traverse each milestone.
+        </p>
+      </div>
+
+      <!-- DUAL SPLIT GRID: TIMELINE ON LEFT, STICKY 3D WORKSTATION ON RIGHT -->
+      <div class="timeline-split-grid">
+        
+        <!-- LEFT COLUMN: DATE-WISE TIMELINE MILESTONES -->
+        <div class="timeline-col-milestones" id="timelineMilestonesCol">
+          <div class="timeline-laser-track">
+            <div class="timeline-laser-fill" id="timelineLaserFill"></div>
+            <div class="timeline-laser-orb" id="timelineLaserOrb"></div>
+          </div>
+
+          <div class="timeline-milestones-list">
+            <!-- Milestone 1: NOW -->
+            <div class="timeline-card-node active" data-index="0" data-year="NOW" data-role="VESA Architecture Cohort">
+              <div class="node-year-badge">
+                <span class="year-pulse"></span>
+                <span class="year-text">NOW</span>
+              </div>
+              <div class="node-card-body">
+                <span class="node-category">COHORT // ADVANCED ARCHITECTURE</span>
+                <h3 class="node-role">VESA Project Cohort</h3>
+                <h4 class="node-sub">Java OOP & Enterprise Concurrency</h4>
+                <p class="node-desc">
+                  Selected for intensive scenario-based cohort architecting high-concurrency Java microservices, design patterns (DAO, Factory, Singleton), and multi-threaded data pipelines.
+                </p>
+                <div class="node-tech-tags">
+                  <span class="node-tag">Java 21</span>
+                  <span class="node-tag">Concurrency</span>
+                  <span class="node-tag">Microservices</span>
+                  <span class="node-tag">Design Patterns</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 2: 2026 Uptricks -->
+            <div class="timeline-card-node" data-index="1" data-year="2026" data-role="Java Backend Intern - Uptricks">
+              <div class="node-year-badge">
+                <span class="year-text">2026</span>
+              </div>
+              <div class="node-card-body">
+                <span class="node-category">INTERNSHIP // CORE BACKEND</span>
+                <h3 class="node-role">Java Backend Intern</h3>
+                <h4 class="node-sub">Uptricks Services Pvt. Ltd. (May – Jul 2026)</h4>
+                <p class="node-desc">
+                  Engineered core Java backend logic, strengthened debugging across live production code, built high-throughput REST APIs, and transferred practices directly to modern FastAPI microservices.
+                </p>
+                <div class="node-tech-tags">
+                  <span class="node-tag">Java</span>
+                  <span class="node-tag">REST APIs</span>
+                  <span class="node-tag">Spring Boot</span>
+                  <span class="node-tag">PostgreSQL</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 3: 2026 SyntecxHub -->
+            <div class="timeline-card-node" data-index="2" data-year="2026" data-role="Java Developer Intern - SyntecxHub">
+              <div class="node-year-badge">
+                <span class="year-text">2026</span>
+              </div>
+              <div class="node-card-body">
+                <span class="node-category">INTERNSHIP // ENTERPRISE SYSTEMS</span>
+                <h3 class="node-role">Java Programming Intern</h3>
+                <h4 class="node-sub">SyntecxHub (2026)</h4>
+                <p class="node-desc">
+                  Shipped 3 production-grade Java web architectures: ATM Simulation, Inventory Management System, and Hospital Patient Record System with role-based auth, DAO persistence, and Servlets/JSP.
+                </p>
+                <div class="node-tech-tags">
+                  <span class="node-tag">JSP/Servlets</span>
+                  <span class="node-tag">MySQL</span>
+                  <span class="node-tag">DAO Pattern</span>
+                  <span class="node-tag">Apache Tomcat</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 4: 2025 Hackathons -->
+            <div class="timeline-card-node" data-index="3" data-year="2025" data-role="Applied AI & Web3 National Finalist">
+              <div class="node-year-badge">
+                <span class="year-text">2025</span>
+              </div>
+              <div class="node-card-body">
+                <span class="node-category">HACKATHONS // AI & WEB3</span>
+                <h3 class="node-role">Full-Stack & Web3 Systems Architect</h3>
+                <h4 class="node-sub">10+ National Hackathons Competed</h4>
+                <p class="node-desc">
+                  Built cryptographically secure voting (ByteQuest Top 25), offline wildlife re-ID with YOLO & OpenCV (Manthan 4 Yuva), and smart UAV telemetry engines (Smart India Hackathon).
+                </p>
+                <div class="node-tech-tags">
+                  <span class="node-tag">FastAPI</span>
+                  <span class="node-tag">Computer Vision</span>
+                  <span class="node-tag">Solidity</span>
+                  <span class="node-tag">pgvector</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 5: 2024 University -->
+            <div class="timeline-card-node" data-index="4" data-year="2024" data-role="B.Tech Computer Science (CGPA 9.2)">
+              <div class="node-year-badge">
+                <span class="year-text">2024</span>
+              </div>
+              <div class="node-card-body">
+                <span class="node-category">ACADEMICS // EXCELLENCE</span>
+                <h3 class="node-role">B.Tech Computer Science & Engineering</h3>
+                <h4 class="node-sub">Ramdeobaba University (RBU Nagpur) • CGPA 9.2 / 10.0</h4>
+                <p class="node-desc">
+                  Ranked top of cohort with 9.2 CGPA distinction. Mastered core Data Structures & Algorithms, Operating Systems, Computer Architecture, Discrete Mathematics, and Object-Oriented Engineering.
+                </p>
+                <div class="node-tech-tags">
+                  <span class="node-tag">DSA</span>
+                  <span class="node-tag">C / C++</span>
+                  <span class="node-tag">OOP</span>
+                  <span class="node-tag">DBMS</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 6: 2023 Foundations -->
+            <div class="timeline-card-node" data-index="5" data-year="2023" data-role="Python & Core Systems Foundations">
+              <div class="node-year-badge">
+                <span class="year-text">2023</span>
+              </div>
+              <div class="node-card-body">
+                <span class="node-category">GENESIS // FOUNDATIONAL LOGIC</span>
+                <h3 class="node-role">Python & Software Foundations</h3>
+                <h4 class="node-sub">Algorithmic Problem-Solving & Daily Repos</h4>
+                <p class="node-desc">
+                  Deep dive into Python scripting, automation engines, algorithms, and fundamental computer science problem-solving across daily competitive programming and GitHub builds.
+                </p>
+                <div class="node-tech-tags">
+                  <span class="node-tag">Python</span>
+                  <span class="node-tag">Git</span>
+                  <span class="node-tag">Linux</span>
+                  <span class="node-tag">Algorithms</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: STICKY 3D THREE.JS CODER WORKSTATION -->
+        <div class="timeline-col-animation" id="timelineAnimationCol">
+          <div class="timeline-sticky-workstation" id="timelineStickyWorkstation">
+            
+            <!-- Three.js 3D Viewport Canvas -->
+            <div class="workstation-3d-wrapper">
+              <canvas id="timelineThreeCanvas" class="workstation-canvas" aria-label="3D Live Coding Scroll Animation"></canvas>
+              
+              <!-- Video Source Element (scrubbed dynamically by Three.js & scroll) -->
+              <video id="timelineCoderVideo" class="sr-only" src="gemini_generated_video_4c83629d.mp4" playsinline muted preload="auto" crossorigin="anonymous"></video>
+
+              <!-- Cyberpunk HUD Overlay on 3D Viewport -->
+              <div class="workstation-hud-overlay">
+                <div class="hud-top-bar">
+                  <div class="hud-indicator-group">
+                    <span class="hud-live-beacon"></span>
+                    <span class="hud-live-title">LIVE CODING ENGINE</span>
+                  </div>
+                  <div class="hud-video-switch">
+                    <button type="button" class="btn-video-toggle active" id="btnVidMulti" data-video="gemini_generated_video_4c83629d.mp4">CAM 01 // MULTI-SCREEN</button>
+                    <button type="button" class="btn-video-toggle" id="btnVidLaptop" data-video="gemini_generated_video_7d75a5f1.mp4">CAM 02 // LAPTOP AI</button>
+                  </div>
+                </div>
+
+                <!-- Center Active Epoch Badge -->
+                <div class="hud-epoch-indicator" id="hudEpochIndicator">
+                  <span class="hud-epoch-label">TIMELINE SYNC</span>
+                  <span class="hud-epoch-val" id="hudActiveYear">2026 // NOW</span>
+                </div>
+
+                <!-- Bottom Telemetry HUD Bar -->
+                <div class="hud-bottom-bar">
+                  <div class="hud-telemetry-item">
+                    <span class="telemetry-lbl">FLOW STATUS</span>
+                    <span class="telemetry-val highlight-cyan" id="hudScrollState">READY TO CODE</span>
+                  </div>
+                  <div class="hud-telemetry-item">
+                    <span class="telemetry-lbl">VELOCITY</span>
+                    <span class="telemetry-val highlight-purple" id="hudCodingWpm">0 WPM</span>
+                  </div>
+                  <div class="hud-telemetry-item">
+                    <span class="telemetry-lbl">SCRUB PROGRESS</span>
+                    <div class="hud-scrub-bar">
+                      <div class="hud-scrub-fill" id="hudScrubFill"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Workstation Status Footer Card -->
+            <div class="workstation-status-strip">
+              <span class="strip-icon">⚡</span>
+              <span class="strip-text" id="workstationStatusText">SCROLL MILESTONES TO ACCELERATE CODE COMPILATION // CURSOR PARALLAX ACTIVE</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MY WORK (FEATURED PROJECT SHOWCASE - EXACT REFERENCE) ===== -->
+  <section class="my-work-showcase-section" id="projects">
+    <div class="container reveal">
+      <div class="my-work-header">
+        <h2 class="my-work-title">My <span class="gradient-text">Work</span></h2>
+      </div>
+
+      <div class="my-work-cards-grid">
+        <!-- 01 PUGMARK -->
+        <div class="featured-work-card">
+          <div class="work-card-top-info">
+            <div class="work-card-num-title">
+              <span class="work-num">01</span>
+              <div class="work-title-wrap">
+                <h3 class="work-name">PUGMARK</h3>
+                <span class="work-cat">Wildlife AI / CV</span>
+              </div>
+            </div>
+            <div class="work-tools-block">
+              <span class="work-tools-lbl">Tools and features</span>
+              <p class="work-tools-text">Python, FastAPI, OpenCV, YOLOv8, SIFT/FLANN, MegaDetector V6, React, GIS</p>
+            </div>
+          </div>
+          <div class="work-card-media work-hud-card hud-pugmark">
+            <div class="hud-top-bar">
+              <span class="hud-tag">PENCH-TIGER-RESERVE // MEGA-DETECTOR</span>
+              <span class="hud-live-badge"><span class="hud-dot"></span> 98.4% SIFT MATCH</span>
+            </div>
+            <div class="hud-center-visual">
+              <div class="radar-circle">
+                <div class="radar-scan"></div>
+                <div class="radar-blip blip-1"></div>
+                <div class="radar-blip blip-2"></div>
+              </div>
+              <div class="hud-detection-box">
+                <span class="box-tag">RE-ID: T-31 (TIGER)</span>
+                <span class="box-sub">SIFT Stripe Matches: 240 keypoints</span>
+              </div>
+            </div>
+            <div class="hud-bottom-bar">
+              <span>CAMERA-TRAP #094</span>
+              <span>TERRITORY: 95% KDE ACTIVE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 HOSPITAL PATIENT RECORD SYSTEM (MEDIA ON TOP IN REFERENCE) -->
+        <div class="featured-work-card media-top-card">
+          <div class="work-card-media work-hud-card hud-hospital">
+            <div class="hud-top-bar">
+              <span class="hud-tag">SYNTECXHUB // SECURITY ARCHITECTURE</span>
+              <span class="hud-live-badge"><span class="hud-dot"></span> SHA-256 + SALTED</span>
+            </div>
+            <div class="hud-center-visual">
+              <div class="cipher-matrix-box">
+                <div class="cipher-roles">
+                  <span class="role-pill-hud role-admin">ADMIN: FULL ACCESS</span>
+                  <span class="role-pill-hud role-doc">DOCTOR: OPD/IPD</span>
+                  <span class="role-pill-hud role-nurse">NURSE: VITALS</span>
+                </div>
+                <div class="cipher-hash-stream">
+                  <code>SHA-256: 8f4e2c91b5d37a0...</code>
+                  <span class="cipher-status">0 SQL INJECTIONS • AUDIT LOG ON</span>
+                </div>
+              </div>
+            </div>
+            <div class="hud-bottom-bar">
+              <span>DAO PATTERN ARCHITECTURE</span>
+              <span>APACHE TOMCAT // MYSQL</span>
+            </div>
+          </div>
+          <div class="work-card-bottom-info">
+            <div class="work-card-num-title">
+              <span class="work-num">02</span>
+              <div class="work-title-wrap">
+                <h3 class="work-name">Patient Record System</h3>
+                <span class="work-cat">Java Backend / Security</span>
+              </div>
+            </div>
+            <div class="work-tools-block">
+              <span class="work-tools-lbl">Tools and features</span>
+              <p class="work-tools-text">Java 17, JSP, Servlets, MySQL, SHA-256 Password Hashing, DAO Pattern, Tomcat</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 SARVAVOTE -->
+        <div class="featured-work-card">
+          <div class="work-card-top-info">
+            <div class="work-card-num-title">
+              <span class="work-num">03</span>
+              <div class="work-title-wrap">
+                <h3 class="work-name">SarvaVote</h3>
+                <span class="work-cat">Voice AI / Accessible</span>
+              </div>
+            </div>
+            <div class="work-tools-block">
+              <span class="work-tools-lbl">Tools and features</span>
+              <p class="work-tools-text">Web Speech API, Python, FastAPI, JavaScript, OTP 2FA Auth, Accessible UI</p>
+            </div>
+          </div>
+          <div class="work-card-media work-hud-card hud-sarvavote">
+            <div class="hud-top-bar">
+              <span class="hud-tag">BYTE QUEST HACKATHON // TOP 25 / 500+</span>
+              <span class="hud-live-badge"><span class="hud-dot"></span> 99.2% SPEECH MATCH</span>
+            </div>
+            <div class="hud-center-visual">
+              <div class="audio-equalizer-bars">
+                <span class="eq-bar bar-1"></span>
+                <span class="eq-bar bar-2"></span>
+                <span class="eq-bar bar-3"></span>
+                <span class="eq-bar bar-4"></span>
+                <span class="eq-bar bar-5"></span>
+                <span class="eq-bar bar-6"></span>
+                <span class="eq-bar bar-7"></span>
+              </div>
+              <div class="hud-detection-box">
+                <span class="box-tag">VOICE: "VOTE CONFIRMED"</span>
+                <span class="box-sub">OTP Verified • Hands-Free Accessible</span>
+              </div>
+            </div>
+            <div class="hud-bottom-bar">
+              <span>ZERO-TOUCH VOTING</span>
+              <span>2FA OTP ENCRYPTED</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MORE PROJECTS ACCORDION / FILTER GALLERY -->
+      <div class="more-projects-section-wrap">
+        <div class="more-projects-heading-row">
+          <h3 class="more-projects-subtitle">Explore All Systems & Hackathon Builds</h3>
+          <div class="project-filters">
+            <button class="project-filter active" data-filter="all">All</button>
+            <button class="project-filter" data-filter="java">Java</button>
+            <button class="project-filter" data-filter="ai">AI / ML</button>
+            <button class="project-filter" data-filter="web3">Web3</button>
+            <button class="project-filter" data-filter="fullstack">Full-Stack</button>
+          </div>
+        </div>
+
+        <!-- SKELETON SCREEN GRID (For zero-CLS smooth loading states) -->
+        <div class="skeleton-grid" id="skeletonGrid" style="display:none;" aria-hidden="true">
+          <div class="skeleton-card">
+            <div class="sk-header"><div class="sk-icon"></div><div class="sk-title"></div></div>
+            <div class="sk-body"></div>
+            <div class="sk-tags"><span></span><span></span><span></span></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="sk-header"><div class="sk-icon"></div><div class="sk-title"></div></div>
+            <div class="sk-body"></div>
+            <div class="sk-tags"><span></span><span></span><span></span></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="sk-header"><div class="sk-icon"></div><div class="sk-title"></div></div>
+            <div class="sk-body"></div>
+            <div class="sk-tags"><span></span><span></span><span></span></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="sk-header"><div class="sk-icon"></div><div class="sk-title"></div></div>
+            <div class="sk-body"></div>
+            <div class="sk-tags"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+          <!-- 01 PUGMARK -->
+          <div class="project-card tilt-card" data-tags="ai,fullstack" data-project-id="pugmark">
+            <div class="project-card-glare"></div>
+            <div class="project-header">
+              <span class="project-icon">🐅</span>
+              <div class="project-header-meta">
+                <span class="project-badge badge-lime">Wildlife AI</span>
+                <span class="project-title">PUGMARK — Pench Intelligence</span>
+              </div>
+              <button class="card-bookmark-btn" data-project="pugmark" aria-label="Bookmark PUGMARK" title="Bookmark project">★</button>
+            </div>
+            <div class="project-metrics-callout">
+              <span class="metric-icon">🎯</span> 95% KDE Territory Mapping • 80% Verification Reduction
+            </div>
+            <p class="project-desc">Offline-first wildlife intelligence platform for Pench Tiger Reserve. Ingests camera-trap footage, filters blank triggers via MegaDetector V6, re-identifies individual tigers via SIFT stripe matching, and plots home ranges.</p>
+            <div class="project-stack">
+              <span>Python</span><span>FastAPI</span><span>OpenCV</span><span>YOLOv8</span><span>SIFT/FLANN</span><span>React</span><span>GIS</span>
+            </div>
+            <div class="project-card-footer">
+              <button class="btn-case-study" data-open-project="pugmark">
+                <span>Case Study & Architecture</span>
+                <span class="cs-arrow">→</span>
+              </button>
+              <a href="https://github.com/Rudrakathoke2006/pugmark-pench-intelligence" target="_blank" rel="noopener" class="project-link" aria-label="GitHub Repository for PUGMARK">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- 02 CHAINSENTINEL -->
+          <div class="project-card tilt-card" data-tags="web3,java" data-project-id="chainsentinel">
+            <div class="project-card-glare"></div>
+            <div class="project-header">
+              <span class="project-icon">⛓️</span>
+              <div class="project-header-meta">
+                <span class="project-badge badge-lavender">SIH 26146</span>
+                <span class="project-title">ChainSentinel</span>
+              </div>
+              <button class="card-bookmark-btn" data-project="chainsentinel" aria-label="Bookmark ChainSentinel" title="Bookmark project">★</button>
+            </div>
+            <div class="project-metrics-callout">
+              <span class="metric-icon">⚡</span> Automated Vulnerability Scans Under 1.2s • AST Analysis
+            </div>
+            <p class="project-desc">Blockchain-backed smart contract and audit pipeline. Performs automated security scoring, AST bytecode parsing, gasless verification layer, and re-entrancy / overflow detection.</p>
+            <div class="project-stack">
+              <span>Solidity</span><span>Web3.js</span><span>Java</span><span>Spring Boot</span><span>PostgreSQL</span>
+            </div>
+            <div class="project-card-footer">
+              <button class="btn-case-study" data-open-project="chainsentinel">
+                <span>Case Study & Architecture</span>
+                <span class="cs-arrow">→</span>
+              </button>
+              <a href="https://github.com/Rudrakathoke2006" target="_blank" rel="noopener" class="project-link" aria-label="GitHub Repository for ChainSentinel">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- 03 SECURE DMS / HOSPITAL SYSTEM -->
+          <div class="project-card tilt-card" data-tags="java,fullstack" data-project-id="hospital">
+            <div class="project-card-glare"></div>
+            <div class="project-header">
+              <span class="project-icon">🔒</span>
+              <div class="project-header-meta">
+                <span class="project-badge badge-cyan">SIH 26190</span>
+                <span class="project-title">Secure DMS & Patient Records</span>
+              </div>
+              <button class="card-bookmark-btn" data-project="hospital" aria-label="Bookmark Hospital System" title="Bookmark project">★</button>
+            </div>
+            <div class="project-metrics-callout">
+              <span class="metric-icon">🛡️</span> 0 OWASP Top 10 Vulnerabilities • Sub-20ms Query Execution
+            </div>
+            <p class="project-desc">Enterprise role-based document & patient management with SHA-256 salted hashing, tiered access controls (Admin/Doctor/Nurse), immutable audit logging, and DAO architectural separation.</p>
+            <div class="project-stack">
+              <span>Java 17</span><span>JSP / Servlets</span><span>MySQL</span><span>SHA-256</span><span>DAO Pattern</span><span>Tomcat</span>
+            </div>
+            <div class="project-card-footer">
+              <button class="btn-case-study" data-open-project="hospital">
+                <span>Case Study & Architecture</span>
+                <span class="cs-arrow">→</span>
+              </button>
+              <a href="https://github.com/Rudrakathoke2006/Syntecxhub_HospitalPatientRecordSystem" target="_blank" rel="noopener" class="project-link" aria-label="GitHub Repository for Patient Record System">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- 04 INFRASENTINEL -->
+          <div class="project-card tilt-card" data-tags="fullstack,ai" data-project-id="infrasentinel">
+            <div class="project-card-glare"></div>
+            <div class="project-header">
+              <span class="project-icon">🛡️</span>
+              <div class="project-header-meta">
+                <span class="project-badge badge-pink">R1-05</span>
+                <span class="project-title">InfraSentinel Telemetry</span>
+              </div>
+              <button class="card-bookmark-btn" data-project="infrasentinel" aria-label="Bookmark InfraSentinel" title="Bookmark project">★</button>
+            </div>
+            <div class="project-metrics-callout">
+              <span class="metric-icon">📡</span> Sub-50ms Telemetry Stream • WebSocket Backpressure Control
+            </div>
+            <p class="project-desc">Critical infrastructure telemetry & predictive monitoring. Real-time distributed WebSocket message streams, early anomaly detection, and PostgreSQL time-series storage.</p>
+            <div class="project-stack">
+              <span>FastAPI</span><span>WebSockets</span><span>React</span><span>PostgreSQL</span><span>Docker</span>
+            </div>
+            <div class="project-card-footer">
+              <button class="btn-case-study" data-open-project="infrasentinel">
+                <span>Case Study & Architecture</span>
+                <span class="cs-arrow">→</span>
+              </button>
+              <a href="https://github.com/Rudrakathoke2006" target="_blank" rel="noopener" class="project-link" aria-label="GitHub Repository for InfraSentinel">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- 05 DRDO UAV DIGITAL TWIN -->
+          <div class="project-card tilt-card" data-tags="ai,fullstack" data-project-id="uav-digital-twin">
+            <div class="project-card-glare"></div>
+            <div class="project-header">
+              <span class="project-icon">✈️</span>
+              <div class="project-header-meta">
+                <span class="project-badge badge-gold">PS 26054</span>
+                <span class="project-title">DRDO UAV Digital Twin</span>
+              </div>
+              <button class="card-bookmark-btn" data-project="uav-digital-twin" aria-label="Bookmark DRDO UAV Twin" title="Bookmark project">★</button>
+            </div>
+            <div class="project-metrics-callout">
+              <span class="metric-icon">🧠</span> 92% Predictive Accuracy On Early Degradation • PyTorch
+            </div>
+            <p class="project-desc">Real-time sensor telemetry and degradation prediction for UAV flight profiles. Neural regression models over multi-sensor time-series datasets with sliding-window normalization.</p>
+            <div class="project-stack">
+              <span>Python</span><span>PyTorch</span><span>FastAPI</span><span>React</span><span>Chart.js</span>
+            </div>
+            <div class="project-card-footer">
+              <button class="btn-case-study" data-open-project="uav-digital-twin">
+                <span>Case Study & Architecture</span>
+                <span class="cs-arrow">→</span>
+              </button>
+              <a href="https://github.com/Rudrakathoke2006" target="_blank" rel="noopener" class="project-link" aria-label="GitHub Repository for UAV Digital Twin">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- 06 SENTINEL-AI DARK WEB BREACH MONITOR -->
+          <div class="project-card tilt-card" data-tags="ai,web3" data-project-id="sentinel-ai">
+            <div class="project-card-glare"></div>
+            <div class="project-header">
+              <span class="project-icon">👁️</span>
+              <div class="project-header-meta">
+                <span class="project-badge badge-white">Threat Intel</span>
+                <span class="project-title">Sentinel-AI Breach Monitor</span>
+              </div>
+              <button class="card-bookmark-btn" data-project="sentinel-ai" aria-label="Bookmark Sentinel-AI" title="Bookmark project">★</button>
+            </div>
+            <div class="project-metrics-callout">
+              <span class="metric-icon">⚡</span> 1M+ Credential Records Scanned in &lt;2s • pgvector
+            </div>
+            <p class="project-desc">Automated threat intelligence and leaked credential alert system. Distributed asynchronous crawlers, SHA-256 hash matching, and sub-millisecond vector indexing.</p>
+            <div class="project-stack">
+              <span>Python</span><span>FastAPI</span><span>PostgreSQL</span><span>pgvector</span><span>Docker</span>
+            </div>
+            <div class="project-card-footer">
+              <button class="btn-case-study" data-open-project="sentinel-ai">
+                <span>Case Study & Architecture</span>
+                <span class="cs-arrow">→</span>
+              </button>
+              <a href="https://github.com/Rudrakathoke2006" target="_blank" rel="noopener" class="project-link" aria-label="GitHub Repository for Sentinel-AI">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- 07 SARVAVOTE -->
+          <div class="project-card tilt-card" data-tags="fullstack,ai" data-project-id="sarvavote">
+            <div class="project-card-glare"></div>
+            <div class="project-header">
+              <span class="project-icon">🎙️</span>
+              <div class="project-header-meta">
+                <span class="project-badge badge-lime">Byte Quest Top 25</span>
+                <span class="project-title">SarvaVote — Voice Voting</span>
+              </div>
+              <button class="card-bookmark-btn" data-project="sarvavote" aria-label="Bookmark SarvaVote" title="Bookmark project">★</button>
+            </div>
+            <div class="project-metrics-callout">
+              <span class="metric-icon">🏆</span> Top 25 of 500+ Teams • 99.2% Speech Recognition Match
+            </div>
+            <p class="project-desc">Voice-guided accessible digital voting system for visually impaired and hands-free users with OTP 2FA authentication, Web Speech API integration, and audit logging.</p>
+            <div class="project-stack">
+              <span>Web Speech API</span><span>Python</span><span>FastAPI</span><span>JS</span><span>OTP 2FA</span>
+            </div>
+            <div class="project-card-footer">
+              <button class="btn-case-study" data-open-project="sarvavote">
+                <span>Case Study & Architecture</span>
+                <span class="cs-arrow">→</span>
+              </button>
+              <a href="https://github.com/Rudrakathoke2006/SarvaVote" target="_blank" rel="noopener" class="project-link" aria-label="GitHub Repository for SarvaVote">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+
+          <!-- 08 TRADE SIMULATOR -->
+          <div class="project-card tilt-card" data-tags="java,fullstack" data-project-id="trade-simulator">
+            <div class="project-card-glare"></div>
+            <div class="project-header">
+              <span class="project-icon">🚀</span>
+              <div class="project-header-meta">
+                <span class="project-badge badge-gold">🥈 2nd Place Cygnus</span>
+                <span class="project-title">Interstellar Trade Simulator</span>
+              </div>
+              <button class="card-bookmark-btn" data-project="trade-simulator" aria-label="Bookmark Trade Simulator" title="Bookmark project">★</button>
+            </div>
+            <div class="project-metrics-callout">
+              <span class="metric-icon">🏆</span> 2nd Position Winner • Graph Dijkstra Optimization
+            </div>
+            <p class="project-desc">Sci-fi interstellar trade optimization platform. Solves multi-destination graph routing under dynamic fuel constraints using high-efficiency Java algorithms.</p>
+            <div class="project-stack">
+              <span>Java</span><span>Algorithms</span><span>React</span><span>Data Structures</span>
+            </div>
+            <div class="project-card-footer">
+              <button class="btn-case-study" data-open-project="trade-simulator">
+                <span>Case Study & Architecture</span>
+                <span class="cs-arrow">→</span>
+              </button>
+              <a href="https://github.com/samrudhimadankar/CYGNUS-v.2.0" target="_blank" rel="noopener" class="project-link" aria-label="GitHub Repository for Trade Simulator">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!-- More Projects -->
+      <div class="more-projects-toggle">
+        <button class="more-projects-btn" id="moreProjectsBtn">
+          View All Projects <span class="chevron">▼</span>
+        </button>
+      </div>
+      <div class="more-projects-grid" id="moreProjectsGrid">
+        <div class="more-project-item">
+          <div class="more-project-title">🚀 Interstellar Trade Route Simulator</div>
+          <div class="more-project-desc">Sci-fi trade optimization tool. <strong style="color:#fbbf24;">🥈 2nd Place</strong> at Cygnus HackTara Hackathon. <em style="color:#a78bfa;">Team Project</em></div>
+          <div class="more-project-links"><a href="https://github.com/samrudhimadankar/CYGNUS-v.2.0" target="_blank">GitHub (Team) →</a></div>
+        </div>
+        <div class="more-project-item">
+          <div class="more-project-title">🩺 CareAI</div>
+          <div class="more-project-desc">AI-assisted clinician dashboard combining records, labs & vitals (ITECHROOTS 16.0 Hackathon).</div>
+        </div>
+        <div class="more-project-item">
+          <div class="more-project-title">📝 Editorial Correction Detector</div>
+          <div class="more-project-desc">Reconciling conflicting manuscript versions. <strong style="color:#06b6d4;">Finalist Round</strong>, Smackathon 2K26.</div>
+          <div class="more-project-links"><a href="https://github.com/Rudrakathoke2006/2026_Debuggers" target="_blank">GitHub →</a></div>
+        </div>
+        <div class="more-project-item">
+          <div class="more-project-title">🎖️ Gasless SkillPass</div>
+          <div class="more-project-desc">Web3 gasless NFT skill-badge platform (HackWithMumbai). <em style="color:#a78bfa;">Contributed</em></div>
+          <div class="more-project-links"><a href="https://github.com/Rudrakathoke2006/hackwithmumbai" target="_blank">GitHub →</a></div>
+        </div>
+        <div class="more-project-item">
+          <div class="more-project-title">🎓 University Event & Fest Management</div>
+          <div class="more-project-desc">Java project managing student events and fest registrations.</div>
+          <div class="more-project-links"><a href="https://github.com/Rudrakathoke2006/DP_Students_University_Event_And_Fest_Management_System_Project1" target="_blank">GitHub →</a></div>
+        </div>
+        <div class="more-project-item">
+          <div class="more-project-title">💊 Pharmacy Management System</div>
+          <div class="more-project-desc">Pharmacy inventory management + assistant bot.</div>
+          <div class="more-project-links"><a href="https://github.com/Rudrakathoke2006/pharmacy" target="_blank">GitHub →</a></div>
+        </div>
+        <div class="more-project-item">
+          <div class="more-project-title">📊 Market Report Generator</div>
+          <div class="more-project-desc">AI-assisted market analysis report generator (React/TypeScript).</div>
+          <div class="more-project-links"><a href="https://github.com/Rudrakathoke2006/market-whisper-report-gen" target="_blank">GitHub →</a></div>
+        </div>
+        <div class="more-project-item">
+          <div class="more-project-title">🐍 Mini Bank ATM System (Python)</div>
+          <div class="more-project-desc">JSON-based console banking app built with Python.</div>
+        </div>
+        <div class="more-project-item">
+          <div class="more-project-title">📖 DevDiary</div>
+          <div class="more-project-desc">First pure HTML5 semantic webpage project.</div>
+        </div>
+        <div class="more-project-item">
+          <div class="more-project-title">🧮 DSA Daily</div>
+          <div class="more-project-desc">Ongoing daily Data Structures & Algorithms practice repository.</div>
+          <div class="more-project-links"><a href="https://github.com/Rudrakathoke2006/DSA_DAILY" target="_blank">GitHub →</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HACKATHONS ===== -->
+  <section class="hackathons" id="hackathons">
+    <div class="container reveal">
+      <span class="section-label">Hackathons & Achievements</span>
+      <h2 class="section-title">Competing at <span class="gradient-text">scale</span></h2>
+      <div class="hackathon-grid">
+        <div class="hackathon-card">
+          <div class="hackathon-rank silver">🥈 2nd Position</div>
+          <div class="hackathon-event">Cygnus — HackTara Hackathon</div>
+          <div class="hackathon-project">Interstellar Trade Route Simulator</div>
+        </div>
+        <div class="hackathon-card">
+          <div class="hackathon-rank finalist">🏆 Top 25 / 500+ teams</div>
+          <div class="hackathon-event">Byte Quest (GFG RBU)</div>
+          <div class="hackathon-project">SarvaVote</div>
+        </div>
+        <div class="hackathon-card">
+          <div class="hackathon-rank finalist">🏆 Top 17 Finalist</div>
+          <div class="hackathon-event">CodeCon 2025</div>
+          <div class="hackathon-project">Legalizer</div>
+        </div>
+        <div class="hackathon-card">
+          <div class="hackathon-rank finalist">🏆 Top 50 / 1350+</div>
+          <div class="hackathon-event">CodeRush 1.0</div>
+          <div class="hackathon-project">EEG Schizophrenia Detection</div>
+        </div>
+        <div class="hackathon-card">
+          <div class="hackathon-rank finalist">🏆 Top 50 / 1399</div>
+          <div class="hackathon-event">CodeRush 2025 (Screening)</div>
+          <div class="hackathon-project">EcoLink</div>
+        </div>
+        <div class="hackathon-card">
+          <div class="hackathon-rank finalist">🏅 Round 2 Finalist</div>
+          <div class="hackathon-event">IDEA3 2025 (TCS)</div>
+          <div class="hackathon-project">AI Travel Itinerary Planner</div>
+        </div>
+        <div class="hackathon-card">
+          <div class="hackathon-rank finalist">🏅 Finalist Round</div>
+          <div class="hackathon-event">Smackathon 2K26</div>
+          <div class="hackathon-project">Manuscript Correction Detector</div>
+        </div>
+        <div class="hackathon-card">
+          <div class="hackathon-rank finalist">✅ Participant</div>
+          <div class="hackathon-event">Smart India Hackathon 2024</div>
+          <div class="hackathon-project">—</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CERTIFICATIONS ===== -->
+  <section class="certifications" id="certifications">
+    <div class="container reveal">
+      <span class="section-label">Certifications</span>
+      <h2 class="section-title">Verified <span class="gradient-text">credentials</span></h2>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <span class="cert-icon">🔗</span>
+          <div>
+            <div class="cert-title">Full-Stack Web3 Development Crash Course</div>
+            <div class="cert-issuer">Cyfrin Updraft</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-icon">📜</span>
+          <div>
+            <div class="cert-title">Solidity 101 (Smart Contract Development)</div>
+            <div class="cert-issuer">Cyfrin Updraft</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-icon">⛓️</span>
+          <div>
+            <div class="cert-title">Blockchain Basics</div>
+            <div class="cert-issuer">Cyfrin Updraft</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-icon">☕</span>
+          <div>
+            <div class="cert-title">Core Java</div>
+            <div class="cert-issuer">Deepak Mozarkar / Dsoft Institute</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-icon">🧮</span>
+          <div>
+            <div class="cert-title">Data Structures & Algorithms</div>
+            <div class="cert-issuer">Dsoft Computer Training Institute</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-icon">💻</span>
+          <div>
+            <div class="cert-title">C Programming</div>
+            <div class="cert-issuer">D'Soft Training Institute</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-icon">🔒</span>
+          <div>
+            <div class="cert-title">IT Security: Defense Against the Digital Dark Arts</div>
+            <div class="cert-issuer">Google (Coursera)</div>
+          </div>
+        </div>
+        <div class="cert-card">
+          <span class="cert-icon">🤖</span>
+          <div>
+            <div class="cert-title">Introduction to Artificial Intelligence</div>
+            <div class="cert-issuer">IBM (Coursera)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LET'S BUILD THE FUTURE (CONTACT & COLLABORATION) ===== -->
+  <section class="contact" id="contact">
+    <div class="container reveal">
+      <div class="contact-header-wrap">
+        <span class="section-label">Collaboration & Engineering</span>
+        <h2 class="section-title">
+          LET'S BUILD <span class="gradient-text">THE FUTURE</span>
+        </h2>
+        <p class="contact-lead-sub">
+          Currently available for <strong>hire, freelancing, and collaboration</strong>. If you have an epic vision, let's make it real.
+        </p>
+      </div>
+
+      <div class="contact-content">
+        <div class="contact-left-col">
+          <div class="contact-status-card">
+            <div class="status-pulse-badge">
+              <span class="pulse-dot"></span>
+              <span>OPEN TO OPPORTUNITIES</span>
+            </div>
+            <h3 class="status-heading">Let's Connect & Build</h3>
+            <p class="contact-text">
+              Whether you need high-throughput Java microservices, applied OpenCV/YOLO vision pipelines, or a modern front-end vibe-coded application shipped fast — reach out through any channel below.
+            </p>
+          </div>
+
+          <div class="contact-links-grid">
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com/in/rudra-kathoke" target="_blank" rel="noopener" class="contact-channel-card channel-linkedin">
+              <div class="channel-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </div>
+              <div class="channel-info">
+                <span class="channel-name">LinkedIn</span>
+                <span class="channel-value">rudra-kathoke ↗</span>
+              </div>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/Rudrakathoke2006" target="_blank" rel="noopener" class="contact-channel-card channel-github">
+              <div class="channel-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </div>
+              <div class="channel-info">
+                <span class="channel-name">GitHub</span>
+                <span class="channel-value">Rudrakathoke2006 ↗</span>
+              </div>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:rudrakathoke@gmail.com" class="contact-channel-card channel-email">
+              <div class="channel-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <div class="channel-info">
+                <span class="channel-name">Direct Email</span>
+                <span class="channel-value">rudrakathoke@gmail.com ✉</span>
+              </div>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="contact-channel-card channel-insta">
+              <div class="channel-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </div>
+              <div class="channel-info">
+                <span class="channel-name">Instagram</span>
+                <span class="channel-value">@rudrakathoke ↗</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contactForm" novalidate>
+          <div class="form-header-badge">
+            <span class="badge-icon">⚡</span>
+            <span>SEND DIRECT MESSAGE / HIRE INQUIRY</span>
+          </div>
+          <div class="form-group">
+            <label for="name">Name <span class="required-star" aria-hidden="true">*</span></label>
+            <input type="text" id="name" name="name" placeholder="Your name or company" required aria-describedby="nameFeedback" />
+            <div class="form-feedback" id="nameFeedback" aria-live="polite"></div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email <span class="required-star" aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" placeholder="you@company.com" required aria-describedby="emailFeedback" />
+            <div class="form-feedback" id="emailFeedback" aria-live="polite"></div>
+          </div>
+          <div class="form-group">
+            <label for="message">Project Vision / Role Details <span class="required-star" aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" placeholder="Tell me about the role, project, or vision..." required rows="4" aria-describedby="messageFeedback"></textarea>
+            <div class="form-feedback" id="messageFeedback" aria-live="polite"></div>
+          </div>
+          <div class="form-actions-row">
+            <button type="submit" class="btn btn-hot-accent" id="contactSubmitBtn">
+              <span class="btn-text">🚀 Send Message / Hire Request</span>
+              <span class="btn-spinner" style="display:none;">⏳</span>
+            </button>
+            <div class="form-draft-status" id="formDraftStatus">
+              <span class="draft-dot"></span>
+              <span id="draftStatusText">Draft auto-saved ✓</span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER (WITH ALL NAVIGATION & PROMINENT HIRE ME GOAL) ===== -->
+  <footer class="footer">
+    <div class="container">
+      <!-- Full Navigation Bar in Footer -->
+      <div class="footer-nav-ribbon">
+        <div class="footer-brand">
+          <span class="logo-bracket">[</span>RK<span class="logo-bracket">]</span>
+          <span class="footer-brand-title">RUDRA KATHOKE</span>
+        </div>
+        <ul class="footer-nav-list" aria-label="Footer Navigation">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#hackathons">Achievements</a></li>
+          <li><a href="assets/resume.pdf" target="_blank">Resume</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="footer-hire-cta-wrap">
+          <a href="#contact" class="btn btn-hire-goal">
+            <span>🔥 HIRE ME</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-telemetry-grid">
+        <div class="telemetry-box">
+          <span class="telemetry-lbl">LOCATION & LOCAL TIME</span>
+          <span class="telemetry-val" id="nagpurClock">Nagpur, IN • --:--:-- IST</span>
+        </div>
+        <div class="telemetry-box">
+          <span class="telemetry-lbl">LATEST COMMIT SHA</span>
+          <span class="telemetry-val"><code style="color:#c8ff5a;">git-4f2b9a7</code> (main)</span>
+        </div>
+        <div class="telemetry-box">
+          <span class="telemetry-lbl">PRIMARY GOAL</span>
+          <span class="telemetry-val highlight-gold">⚡ Hire Rudra Kathoke</span>
+        </div>
+        <div class="telemetry-box">
+          <span class="telemetry-lbl">STATUS</span>
+          <span class="telemetry-val status-green">🟢 Available for Hire</span>
+        </div>
+      </div>
+
+      <div class="footer-kinetic-name">RUDRA KATHOKE</div>
+
+      <div class="footer-inner">
+        <p class="footer-copy">© 2026 Rudra Kathoke • Java Backend Architect • AI Engineer • Vibe Coder • Ramdeobaba University (CGPA 9.2)</p>
+        <div class="footer-links">
+          <a href="#hero">Back to Top ↑</a>
+          <a href="assets/resume.pdf" target="_blank">Resume (PDF)</a>
+          <a href="https://linkedin.com/in/rudra-kathoke" target="_blank">LinkedIn</a>
+          <a href="https://github.com/Rudrakathoke2006" target="_blank">GitHub</a>
+          <a href="mailto:rudrakathoke@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+  <!-- PROJECT CASE STUDY DETAIL MODAL (SHARED LAYOUT MORPHING) -->
+  <div class="modal-overlay" id="projectDetailModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle">
+    <div class="modal-card project-modal-card">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span class="modal-icon" id="modalProjectIcon">🐅</span>
+          <div>
+            <div class="project-modal-badge-row">
+              <span class="modal-badge badge-lime" id="modalProjectBadge">Wildlife AI</span>
+              <span class="modal-tag" id="modalProjectCategory">AI / CV Engine</span>
+            </div>
+            <h3 id="modalProjectTitle">PUGMARK — Pench Intelligence</h3>
+            <span class="modal-sub" id="modalProjectSubtitle">Offline-First Tiger Stripe Re-Identification & Territory Mapping</span>
+          </div>
+        </div>
+        <div class="modal-header-actions">
+          <button class="btn-bookmark" id="modalBookmarkBtn" aria-label="Bookmark project" title="Bookmark project">
+            <span class="bookmark-icon">★</span>
+            <span class="bookmark-label">Bookmark</span>
+            <span class="bookmark-count" id="modalBookmarkCount">42</span>
+          </button>
+          <button class="modal-close" id="projectModalClose" aria-label="Close Project Details">✕</button>
+        </div>
+      </div>
+
+      <div class="project-modal-body">
+        <!-- Problem & Role Section -->
+        <div class="project-modal-grid">
+          <div class="modal-section-box">
+            <h4 class="modal-section-title"><span class="sec-icon">🎯</span> Problem Statement</h4>
+            <p id="modalProjectProblem" class="modal-text">Field officers in Pench Tiger Reserve faced manual camera-trap inspection overhead with thousands of blank/false triggers and unindexed animal sightings.</p>
+          </div>
+
+          <div class="modal-section-box">
+            <h4 class="modal-section-title"><span class="sec-icon">💼</span> My Engineering Role</h4>
+            <p id="modalProjectRole" class="modal-text">Lead AI Engineer — Developed OpenCV/YOLOv8 pipeline and SIFT stripe pattern matching module.</p>
+          </div>
+        </div>
+
+        <!-- C4 Architecture Diagram / System Topology -->
+        <div class="modal-c4-box">
+          <div class="c4-header">
+            <span class="c4-title">📐 Production System Architecture (C4 Model)</span>
+            <span class="c4-latency-badge" id="modalProjectLatency">Avg Latency: 85ms</span>
+          </div>
+          <div class="c4-diagram-canvas" id="modalC4Diagram">
+            <!-- Rendered dynamically with live nodes -->
+          </div>
+        </div>
+
+        <!-- Verified Production Metrics -->
+        <div class="modal-metrics-box">
+          <h4 class="modal-section-title"><span class="sec-icon">📊</span> Verified Production Metrics</h4>
+          <div class="metrics-highlight-pill" id="modalProjectMetrics">
+            95% KDE Territory Mapping Accuracy & 80% reduction in manual verification overhead.
+          </div>
+        </div>
+
+        <!-- Telemetry & X-Ray Info -->
+        <div class="modal-telemetry-row">
+          <div class="modal-tele-item">
+            <span class="tele-lbl">CORE SERVICE</span>
+            <span class="tele-val" id="modalProjectService">FastAPI PyEngine</span>
+          </div>
+          <div class="modal-tele-item">
+            <span class="tele-lbl">PERSISTENCE / DB</span>
+            <span class="tele-val" id="modalProjectDatabase">pgvector (Embeddings)</span>
+          </div>
+          <div class="modal-tele-item">
+            <span class="tele-lbl">KEY LEARNING</span>
+            <span class="tele-val" id="modalProjectLearnings">Optimized feature vector extraction for noisy low-light IR camera traps</span>
+          </div>
+        </div>
+
+        <!-- Tech Stack Tags -->
+        <div class="modal-stack-wrap">
+          <span class="modal-stack-label">Architecture Tech Stack:</span>
+          <div class="modal-tech-tags" id="modalProjectStack">
+            <!-- Tech badges rendered dynamically -->
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="modal-footer-actions">
+          <a href="#" target="_blank" rel="noopener" class="btn btn-primary" id="modalGithubLink">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>View Source Code on GitHub</span>
+          </a>
+          <button class="btn btn-ghost" id="modalShareBtn">
+            <span>🔗 Copy Case Study Link</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- SECRET EASTER EGG MODAL (KONAMI CODE / CLI HIRE) -->
+  <div class="modal-overlay" id="easterEggModal" aria-hidden="true">
+    <div class="modal-card easter-egg-card">
+      <div class="modal-header">
+        <div class="modal-title">
+          <span class="modal-icon">🎉</span>
+          <div>
+            <h3>SECRET UNLOCKED: SUDO HIRE RUDRA</h3>
+            <span class="modal-sub">Konami Code / Admin Override Activated</span>
+          </div>
+        </div>
+        <button class="modal-close" id="easterEggClose">✕</button>
+      </div>
+      <div class="easter-egg-body">
+        <div class="secret-badge-large">🏆 HIRE CONTRACT READY</div>
+        <p class="secret-text">You've unlocked the secret admin override! Rudra Kathoke is ready to bring high-throughput Java backend, AI engineering, & Web3 speed to your engineering team.</p>
+        <div class="secret-actions">
+          <a href="mailto:rudrakathoke@gmail.com?subject=Offer%20for%20Rudra%20Kathoke&body=Hi%20Rudra,%20we%20unlocked%20your%20portfolio%20easter%20egg!" class="btn btn-hot-accent">
+            <span>🚀 Send Job Offer / Internship Interview</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AI CHAT FLOATING WIDGET -->
+  <button class="ai-chat-toggle" id="aiChatToggle" aria-label="Open Rudra AI Chat">
+    <span class="ai-chat-icon">✨</span>
+    <span class="ai-chat-pulse"></span>
+  </button>
+
+  <div class="ai-chat-modal" id="aiChatModal" aria-hidden="true">
+    <div class="ai-chat-header">
+      <div class="ai-chat-title">
+        <span class="ai-avatar">🤖</span>
+        <div>
+          <h3>Rudra's AI Assistant</h3>
+          <span class="ai-status">Online • Ask about projects, skills, education</span>
+        </div>
+      </div>
+      <button class="ai-chat-close" id="aiChatClose" aria-label="Close Chat">✕</button>
+    </div>
+
+    <div class="ai-chat-body" id="aiChatBody">
+      <div class="ai-message bot">
+        <div class="ai-msg-bubble">
+          👋 Hi! I'm Rudra's personal AI assistant trained on his resume & projects. Ask me anything about <strong>PUGMARK Wildlife AI</strong>, <strong>SarvaVote</strong>, Java backend, CGPA (9.2), or why you should hire him!
+        </div>
+      </div>
+    </div>
+
+    <div class="ai-chat-suggestions">
+      <button class="suggestion-chip" data-prompt="What are Rudra's top projects?">🚀 Top Projects</button>
+      <button class="suggestion-chip" data-prompt="Tell me about his hackathon wins">🏆 Hackathons</button>
+      <button class="suggestion-chip" data-prompt="Why hire Rudra?">⭐ Why Hire Him?</button>
+    </div>
+
+    <form class="ai-chat-form" id="aiChatForm">
+      <input type="text" id="aiChatInput" placeholder="Ask about projects, skills, CGPA..." autocomplete="off" required />
+      <button type="submit" aria-label="Send message">➔</button>
+    </form>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

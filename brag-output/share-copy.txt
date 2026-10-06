@@ -1,0 +1,69 @@
+================================================================================
+RUDRA KATHOKE — PROOF OF WORK PORTFOLIO LAUNCH COPY
+================================================================================
+
+Project: Rudra Kathoke — SDE / Java Backend / AI Engineer Portfolio
+Format: Vertical (9:16) 15–25 Second Motion Launch Video
+Tone: Polished, Gen Z Professional, High Energy, Technical Precision
+
+--------------------------------------------------------------------------------
+OPTION 1: TWITTER / X (CONCISE & HIGH IMPACT)
+--------------------------------------------------------------------------------
+Recruiters don't trust text on cards. They trust code running live. ⚡
+
+I built a "Proof of Work" portfolio for Rudra Kathoke (B.Tech CSE, CGPA 9.2):
+🔹 X-Ray Mode toggle — overlays every UI block with tech, latency & DB tables
+🔹 Python FastAPI + pgvector RAG chatbot
+🔹 "Paste a Job Description" NLP project fit ranker
+🔹 Java Spring Boot 3 contact & guestbook microservice
+🔹 100% On-Device MediaPipe hand gesture control
+
+Check it running live: http://localhost:3000
+Architecture & latency breakdown: http://localhost:3000/under-the-hood.html
+
+#Java #FastAPI #AI #WebDev #BuildInPublic #OpenToInternships
+
+--------------------------------------------------------------------------------
+OPTION 2: LINKEDIN (IN-DEPTH & PROFESSIONAL STORY)
+--------------------------------------------------------------------------------
+Why claim skills on a resume when you can run them live in your portfolio?
+
+As a Computer Science student at Ramdeobaba University (RBU Nagpur, CGPA 9.2), I wanted to solve a major problem in tech hiring: generic resume claims.
+
+Instead of writing "Java, Python, RAG AI, Web3", every skill on my portfolio is a running production feature:
+
+1️⃣ X-Ray Mode Toggle: Click [X-RAY: ON] in the navbar, and every component overlays its backend service name, database table (`pgvector`, `contact_messages`), and live latency (e.g. FastAPI 14ms).
+2️⃣ RAG "Ask My Portfolio" AI: Query my actual project case studies, hackathon rankings (Top 25 GFG, 2nd Cygnus), and code architecture with citation links.
+3️⃣ Semantic JD Matcher: Paste any job description to rank my top projects by embedding fit score & explanation.
+4️⃣ Java Spring Boot Microservice: Handles contact logging & guestbook messages with Jakarta Bean Validation and IP bucket rate-limiting.
+5️⃣ On-Device Computer Vision: Swipe and navigate using hand gestures processed 100% client-side via MediaPipe.
+
+Built with Next.js 14, Tailwind, Python FastAPI, Spring Boot 3, PostgreSQL, and GSAP.
+
+Explore the live portfolio: http://localhost:3000
+Under the Hood topology: http://localhost:3000/under-the-hood.html
+System status & Lighthouse 98 scores: http://localhost:3000/status.html
+
+Open to SDE, Java Backend, and AI Engineering internship opportunities! 🚀
+
+#SoftwareEngineering #Java #SpringBoot #Python #AI #MachineLearning #WebDevelopment #HighDistinction
+
+--------------------------------------------------------------------------------
+OPTION 3: REDDIT (r/webdev / r/coding / r/programming)
+--------------------------------------------------------------------------------
+Title: I built a portfolio with an "X-Ray Mode" toggle that overlays every UI component with the backend service and live DB latency powering it.
+
+Body:
+Hey r/webdev!
+
+Most portfolios list skills as tags or progress bars. I wanted to build something where every claimed skill is a functional backend feature:
+
+- Python/FastAPI: RAG query assistant over case study markdown & JD fit ranker.
+- Java/Spring Boot: Microservice with Bean Validation & rate-limiting for messages.
+- PostgreSQL + pgvector: Stores vector embeddings for semantic search.
+- MediaPipe: Hand-gesture navigation running 100% on-device (camera off by default).
+- X-Ray Toggle: Overlays tech metrics on every section.
+
+Would love feedback on the architecture and UX!
+Live site: http://localhost:3000
+System architecture breakdown: http://localhost:3000/under-the-hood.html
